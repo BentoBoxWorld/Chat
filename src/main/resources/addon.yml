@@ -1,0 +1,8 @@
+name: Chat
+main: world.bentobox.chat.Chat
+version: ${version}${build.number}
+icon: WRITABLE_BOOK
+
+softdepend: BSkyBlock, AcidIsland, SkyGrid, CaveBlock
+
+authors: Poslovitch, YellowZaki
