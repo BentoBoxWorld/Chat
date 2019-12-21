@@ -16,26 +16,64 @@ import java.util.List;
 @ConfigComment("Configuration file for Chat [version].")
 public class Settings implements ConfigObject {
 
-	@ConfigEntry(path = "team-chat.gamemodes")
-	private List<String> teamChatGamemodes = Arrays.asList("BSkyBlock", "AcidIsland", "CaveBlock", "SkyGrid");
+    @ConfigEntry(path = "team-chat.gamemodes")
+    private List<String> teamChatGamemodes = Arrays.asList("BSkyBlock", "AcidIsland", "CaveBlock", "SkyGrid");
 
-	@ConfigComment("Lists the gamemodes in which you want the Chat addon to be effective.")
-	@ConfigEntry(path = "island-chat.gamemodes")
-	private List<String> islandChatGamemodes = Arrays.asList("BSkyBlock", "AcidIsland", "CaveBlock", "SkyGrid");
+    @ConfigComment("Log team chats to console.")
+    @ConfigEntry(path = "team-chat.log")
+    private boolean logTeamChats;
 
-	public List<String> getTeamChatGamemodes() {
-		return teamChatGamemodes;
-	}
+    @ConfigComment("Lists the gamemodes in which you want the Chat addon to be effective.")
+    @ConfigEntry(path = "island-chat.gamemodes")
+    private List<String> islandChatGamemodes = Arrays.asList("BSkyBlock", "AcidIsland", "CaveBlock", "SkyGrid");
 
-	public void setTeamChatGamemodes(List<String> teamChatGamemodes) {
-		this.teamChatGamemodes = teamChatGamemodes;
-	}
+    @ConfigComment("Log island chats to console.")
+    @ConfigEntry(path = "island-chat.log")
+    private boolean logIslandChats;
 
-	public List<String> getIslandChatGamemodes() {
-		return islandChatGamemodes;
-	}
 
-	public void setIslandChatGamemodes(List<String> islandChatGamemodes) {
-		this.islandChatGamemodes = islandChatGamemodes;
-	}
+
+    public List<String> getTeamChatGamemodes() {
+        return teamChatGamemodes;
+    }
+
+    public void setTeamChatGamemodes(List<String> teamChatGamemodes) {
+        this.teamChatGamemodes = teamChatGamemodes;
+    }
+
+    public List<String> getIslandChatGamemodes() {
+        return islandChatGamemodes;
+    }
+
+    public void setIslandChatGamemodes(List<String> islandChatGamemodes) {
+        this.islandChatGamemodes = islandChatGamemodes;
+    }
+
+    /**
+     * @return the logTeamChats
+     */
+    public boolean isLogTeamChats() {
+        return logTeamChats;
+    }
+
+    /**
+     * @param logTeamChats the logTeamChats to set
+     */
+    public void setLogTeamChats(boolean logTeamChats) {
+        this.logTeamChats = logTeamChats;
+    }
+
+    /**
+     * @return the logIslandChats
+     */
+    public boolean isLogIslandChats() {
+        return logIslandChats;
+    }
+
+    /**
+     * @param logIslandChats the logIslandChats to set
+     */
+    public void setLogIslandChats(boolean logIslandChats) {
+        this.logIslandChats = logIslandChats;
+    }
 }

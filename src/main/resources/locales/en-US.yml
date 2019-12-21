@@ -1,0 +1,22 @@
+chat:
+  team-chat:
+    description: "Toggle team chat on/off"
+    on: "Team chat on"
+    off: "Team chat off"
+    syntax: "&6[team-chat] &4[message]"
+    spy:    
+      description: "Toggle spying on all team chats"
+      on: "Team chat spy on"
+      off: "Team chat spy off"
+      syntax: "&c[team-chat-spy] &4[name]: &5[message]"
+  island-chat:
+    description: "Toggle island chat on/off"
+    on: "Island chat on"
+    off: "Island chat off"
+    syntax: "&6[island-chat] &4[message]"
+    spy:
+      description: "Toggle spying on all island chats"
+      on: "Island chat spy on"
+      off: "Island chat spy off"
+      syntax: "&c[island-chat-spy] &4[name]: &5[message]" 
+  
