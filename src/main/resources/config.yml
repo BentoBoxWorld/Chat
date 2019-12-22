@@ -1,0 +1,18 @@
+# Configuration file for Chat
+team-chat:
+  gamemodes:
+  - BSkyBlock
+  - AcidIsland
+  - CaveBlock
+  - SkyGrid
+  # Log team chats to console.
+  log: false
+island-chat:
+  # Lists the gamemodes in which you want the Chat addon to be effective.
+  gamemodes:
+  - BSkyBlock
+  - AcidIsland
+  - CaveBlock
+  - SkyGrid
+  # Log island chats to console.
+  log: false

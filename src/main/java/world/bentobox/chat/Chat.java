@@ -34,6 +34,7 @@ public class Chat extends Addon {
 
         // Load settings from config.yml
         loadSettings();
+        configObject.saveConfigObject(settings);
 
         /* Setup */
         setupCommands();
@@ -46,12 +47,14 @@ public class Chat extends Addon {
     private void setupCommands() {
         getPlugin().getAddonsManager().getGameModeAddons().forEach(gameModeAddon -> {
             if (settings.getTeamChatGamemodes().contains(gameModeAddon.getDescription().getName())) {
+                log("Hooking team chat into " + gameModeAddon.getDescription().getName());
                 gameModeAddon.getPlayerCommand().ifPresent(c -> new IslandTeamChatCommand(this, c, "teamchat"));
                 gameModeAddon.getAdminCommand().ifPresent(c -> new AdminTeamChatSpyCommand(this, c, "teamchatspy"));
                 registeredGameModes.add(gameModeAddon);
             }
 
             if (settings.getIslandChatGamemodes().contains(gameModeAddon.getDescription().getName())) {
+                log("Hooking island chat into " + gameModeAddon.getDescription().getName());
                 gameModeAddon.getPlayerCommand().ifPresent(playerCommand -> new IslandChatCommand(this, playerCommand, "chat"));
                 gameModeAddon.getAdminCommand().ifPresent(playerCommand -> new AdminIslandChatSpyCommand(this, playerCommand, "chatspy"));
                 registeredGameModes.add(gameModeAddon);
@@ -74,7 +77,11 @@ public class Chat extends Addon {
      * @param world - world to check
      * @return true if chat is active in this world
      */
-    public boolean inRegGameWorld(World world) {
+    public boolean isRegisteredGameWorld(World world) {
+        log("Checking world " + world.getName());
+        for (GameModeAddon gm : registeredGameModes) {
+            log("Checking " + gm.getDescription().getName() + " " + gm.inWorld(world));
+        }
         return registeredGameModes.parallelStream().anyMatch(gmw -> gmw.inWorld(world));
     }
 

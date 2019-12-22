@@ -23,9 +23,9 @@ public class AdminIslandChatSpyCommand extends CompositeCommand {
     public boolean execute(User user, String label, List<String> args) {
         Chat addon = this.getAddon();
         if (addon.getListener().toggleIslandSpy(user.getUniqueId())) {
-            user.sendMessage("chat.island-chat.spy.on");
+            user.sendMessage("chat.island-chat.spy.island-on");
         } else {
-            user.sendMessage("chat.island-chat.spy.off");
+            user.sendMessage("chat.island-chat.spy.island-off");
         }
         return true;
     }

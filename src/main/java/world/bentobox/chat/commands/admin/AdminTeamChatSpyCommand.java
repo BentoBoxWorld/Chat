@@ -23,9 +23,9 @@ public class AdminTeamChatSpyCommand extends CompositeCommand {
     public boolean execute(User user, String label, List<String> args) {
         Chat addon = this.getAddon();
         if (addon.getListener().toggleSpy(user.getUniqueId())) {
-            user.sendMessage("chat.team-chat.spy.on");
+            user.sendMessage("chat.team-chat.spy.spy-on");
         } else {
-            user.sendMessage("chat.team-chat.spy.off");
+            user.sendMessage("chat.team-chat.spy.spy-off");
         }
         return true;
     }

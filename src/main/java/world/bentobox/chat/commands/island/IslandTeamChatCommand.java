@@ -37,9 +37,9 @@ public class IslandTeamChatCommand extends CompositeCommand {
     public boolean execute(User user, String label, List<String> args) {
         Chat addon = this.getAddon();
         if (addon.getListener().togglePlayerTeamChat(user.getUniqueId())) {
-            user.sendMessage("chat.team-chat.on");
+            user.sendMessage("chat.team-chat.chat-on");
         } else {
-            user.sendMessage("chat.team-chat.off");
+            user.sendMessage("chat.team-chat.chat-off");
         }
         return true;
     }

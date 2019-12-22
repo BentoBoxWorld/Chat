@@ -39,9 +39,9 @@ public class IslandChatCommand extends CompositeCommand {
     public boolean execute(User user, String label, List<String> args) {
         Chat addon = this.getAddon();
         if (addon.getListener().toggleIslandChat(island)) {
-            user.sendMessage("chat.island-chat.on");
+            user.sendMessage("chat.island-chat.island-on");
         } else {
-            user.sendMessage("chat.island-chat.off");
+            user.sendMessage("chat.island-chat.island-off");
         }
         return true;
     }
