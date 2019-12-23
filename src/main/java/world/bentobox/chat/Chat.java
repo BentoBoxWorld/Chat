@@ -78,10 +78,6 @@ public class Chat extends Addon {
      * @return true if chat is active in this world
      */
     public boolean isRegisteredGameWorld(World world) {
-        log("Checking world " + world.getName());
-        for (GameModeAddon gm : registeredGameModes) {
-            log("Checking " + gm.getDescription().getName() + " " + gm.inWorld(world));
-        }
         return registeredGameModes.parallelStream().anyMatch(gmw -> gmw.inWorld(world));
     }
 
