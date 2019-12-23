@@ -1,0 +1,16 @@
+---
+chat:
+  team-chat:
+    description: チームチャットのオン/オフを切り替えます
+    chat-on: "＆aチームチャット。"
+    chat-off: "＆aチームチャットオフ。"
+    spy:
+      description: すべてのチームチャットのスパイを切り替えます
+      spy-on: "＆aチームチャットスパイ。"
+      spy-off: "＆cチームチャットスパイオフ。"
+  island-chat:
+    description: アイランドチャットのオン/オフを切り替えます
+    spy:
+      description: すべての島のチャットのスパイを切り替えます
+      spy-on: "＆a島のチャットスパイ。"
+      syntax: "＆c [island-chat-spy]＆a [name]＆8：＆f [message]"
