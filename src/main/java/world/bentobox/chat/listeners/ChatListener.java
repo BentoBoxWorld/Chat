@@ -80,7 +80,7 @@ public class ChatListener implements Listener {
             }
             // Spy if required
             Bukkit.getOnlinePlayers().stream()
-            .filter(p -> spies.contains(p.getUniqueId()))
+            .filter(p -> islandSpies.contains(p.getUniqueId()))
             .map(User::getInstance)
             .forEach(a -> a.sendMessage("chat.team-chat.spy-syntax", TextVariables.NAME, player.getName(), "[message]", message));
         });
@@ -102,7 +102,7 @@ public class ChatListener implements Listener {
             }
             // Spy if required
             Bukkit.getOnlinePlayers().stream()
-            .filter(p -> islandSpies.contains(p.getUniqueId()))
+            .filter(p -> spies.contains(p.getUniqueId()))
             .map(User::getInstance)
             .forEach(u -> u.sendMessage("chat.team-chat.spy-syntax", TextVariables.NAME, player.getName(), "[message]", message));
         });
