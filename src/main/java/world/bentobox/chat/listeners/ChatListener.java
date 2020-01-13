@@ -15,6 +15,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import world.bentobox.bentobox.api.localization.TextVariables;
 import world.bentobox.bentobox.api.user.User;
 import world.bentobox.bentobox.database.objects.Island;
+import world.bentobox.bentobox.managers.RanksManager;
 import world.bentobox.chat.Chat;
 
 /**
@@ -87,8 +88,8 @@ public class ChatListener implements Listener {
     }
 
     private void teamChat(final Player player, String message) {
-        // Get island members
-        addon.getIslands().getIsland(player.getWorld(), player.getUniqueId()).getMembers().keySet().stream()
+        // Get island members of coop or above
+        addon.getIslands().getIsland(player.getWorld(), player.getUniqueId()).getMemberSet(RanksManager.COOP_RANK).stream()
         // Map to users
         .map(User::getInstance)
         // Filter for online only
