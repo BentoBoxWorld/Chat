@@ -1,5 +1,6 @@
 package world.bentobox.chat.listeners;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -12,6 +13,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
+import world.bentobox.bentobox.api.events.team.TeamEvent;
 import world.bentobox.bentobox.api.localization.TextVariables;
 import world.bentobox.bentobox.api.user.User;
 import world.bentobox.bentobox.database.objects.Island;
@@ -27,14 +29,14 @@ public class ChatListener implements Listener {
 
     private final Chat addon;
     private final Set<UUID> teamChatUsers;
-    private final Set<Island> islands;
+    private final HashMap<Island, Set<Player>> islands;
     // List of which users are spying or not on team and island chat
     private final Set<UUID> spies;
     private final Set<UUID> islandSpies;
 
     public ChatListener(Chat addon) {
         this.teamChatUsers = new HashSet<>();
-        this.islands = new HashSet<>();
+        this.islands = new HashMap<>();
         this.addon = addon;
         // Initialize spies
         spies = new HashSet<>();
@@ -58,7 +60,10 @@ public class ChatListener implements Listener {
                 teamChat(p, e.getMessage());
             }
         }
-        addon.getIslands().getIslandAt(p.getLocation()).filter(islands::contains).ifPresent(i -> {
+        addon.getIslands().getIslandAt(p.getLocation())
+                .filter(islands.keySet()::contains)
+                .filter(i -> islands.get(i).contains(p))
+                .ifPresent(i -> {
             // Cancel the event
             e.setCancelled(true);
             if (e.isAsynchronous()) {
@@ -69,7 +74,23 @@ public class ChatListener implements Listener {
         });
     }
 
-    private void islandChat(Island i, Player player, String message) {
+    // Removes player from TeamChat set if he left the island
+    @EventHandler
+    public void onLeave(TeamEvent.TeamLeaveEvent e) {
+
+        if (teamChatUsers.contains(e.getPlayerUUID()))
+            teamChatUsers.remove(e.getPlayerUUID());
+    }
+
+    // Removes player from TeamChat set if he was kicked from the island
+    @EventHandler
+    public void onKick(TeamEvent.TeamKickEvent e) {
+
+        if (teamChatUsers.contains(e.getPlayerUUID()))
+            teamChatUsers.remove(e.getPlayerUUID());
+    }
+
+    public void islandChat(Island i, Player player, String message) {
         Bukkit.getOnlinePlayers().stream().map(User::getInstance)
         .filter(u -> i.onIsland(u.getLocation()))
         .forEach(u -> {
@@ -87,7 +108,7 @@ public class ChatListener implements Listener {
         });
     }
 
-    private void teamChat(final Player player, String message) {
+    public void teamChat(final Player player, String message) {
         // Get island members of coop or above
         addon.getIslands().getIsland(player.getWorld(), player.getUniqueId()).getMemberSet(RanksManager.COOP_RANK).stream()
         // Map to users
@@ -169,14 +190,20 @@ public class ChatListener implements Listener {
      * @param island - island
      * @return true if island chat is now on, otherwise false
      */
-    public boolean toggleIslandChat(Island island) {
-        if (islands.contains(island)) {
-            islands.remove(island);
-            return false;
-        } else {
-            islands.add(island);
+    public boolean toggleIslandChat(Island island, Player player) {
+        if (islands.containsKey(island)) {
+            if (islands.get(island).contains(player)) {
+                islands.get(island).remove(player);
+                return false;
+            }
+            islands.get(island).add(player);
             return true;
         }
-
+        else {
+            islands.put(island, new HashSet<>());
+            islands.get(island).add(player);
+            return true;
+        }
     }
+
 }
