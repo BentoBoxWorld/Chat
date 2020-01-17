@@ -30,11 +30,9 @@ public class IslandChatCommand extends CompositeCommand {
 
     @Override
     public boolean canExecute(User user, String label, List<String> args) {
-        boolean is = false;
 
-        if(is = this.getIslands().getIslandAt(user.getLocation()).isPresent())
-            island = this.getIslands().getIslandAt(user.getLocation()).get();
-        return is;
+        island = this.getIslands().getIslandAt(user.getLocation()).orElse(null);
+        return island != null;
     }
 
     @Override

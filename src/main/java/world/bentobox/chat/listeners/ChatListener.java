@@ -1,9 +1,6 @@
 package world.bentobox.chat.listeners;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -29,7 +26,7 @@ public class ChatListener implements Listener {
 
     private final Chat addon;
     private final Set<UUID> teamChatUsers;
-    private final HashMap<Island, Set<Player>> islands;
+    private final Map<Island, Set<Player>> islands;
     // List of which users are spying or not on team and island chat
     private final Set<UUID> spies;
     private final Set<UUID> islandSpies;
