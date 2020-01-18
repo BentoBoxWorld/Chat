@@ -13,7 +13,7 @@ import world.bentobox.chat.Chat;
 public class IslandTeamChatCommand extends CompositeCommand {
 
     public IslandTeamChatCommand(Addon addon, CompositeCommand parent, String label) {
-        super(addon, parent, label);
+        super(addon, parent, label, "tc");
     }
 
     @Override
@@ -36,6 +36,14 @@ public class IslandTeamChatCommand extends CompositeCommand {
     @Override
     public boolean execute(User user, String label, List<String> args) {
         Chat addon = this.getAddon();
+
+        // Send the message directly into team chat without the need of toggling it
+        // if there is existence of more arguments
+        if (args.size() > 0) {
+            addon.getListener().teamChat(user.getPlayer(), String.join(" ", args));
+            return true;
+        }
+
         if (addon.getListener().togglePlayerTeamChat(user.getUniqueId())) {
             user.sendMessage("chat.team-chat.chat-on");
         } else {

@@ -30,15 +30,24 @@ public class IslandChatCommand extends CompositeCommand {
 
     @Override
     public boolean canExecute(User user, String label, List<String> args) {
-        // TODO check rank
-        island = this.getIslands().getIsland(getWorld(), user);
+
+        island = this.getIslands().getIslandAt(user.getLocation()).orElse(null);
         return island != null;
     }
 
     @Override
     public boolean execute(User user, String label, List<String> args) {
         Chat addon = this.getAddon();
-        if (addon.getListener().toggleIslandChat(island)) {
+
+        // Send the message directly into island chat without the need of toggling it
+        // if there is existence of more arguments
+        if (args.size() > 0) {
+            addon.getListener().islandChat(island, user.getPlayer(), String.join(" ", args));
+            return true;
+        }
+
+
+        if (addon.getListener().toggleIslandChat(island, user.getPlayer())) {
             user.sendMessage("chat.island-chat.island-on");
         } else {
             user.sendMessage("chat.island-chat.island-off");
