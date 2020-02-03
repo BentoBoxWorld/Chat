@@ -1,6 +1,10 @@
 package world.bentobox.chat.listeners;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -24,6 +28,7 @@ import world.bentobox.chat.Chat;
  */
 public class ChatListener implements Listener {
 
+    private static final String MESSAGE = "[message]";
     private final Chat addon;
     private final Set<UUID> teamChatUsers;
     private final Map<Island, Set<Player>> islands;
@@ -91,7 +96,7 @@ public class ChatListener implements Listener {
         Bukkit.getOnlinePlayers().stream().map(User::getInstance)
         .filter(u -> i.onIsland(u.getLocation()))
         // Send message to island
-        .forEach(u -> u.sendMessage("chat.island-chat.syntax", TextVariables.NAME, player.getName(), "[message]", message));
+        .forEach(u -> u.sendMessage("chat.island-chat.syntax", TextVariables.NAME, player.getName(), MESSAGE, message));
         // Log if required
         if (addon.getSettings().isLogTeamChats()) {
             addon.log("[Team Chat Log] " + player.getName() + ": " + message);
@@ -100,7 +105,7 @@ public class ChatListener implements Listener {
         Bukkit.getOnlinePlayers().stream()
         .filter(p -> islandSpies.contains(p.getUniqueId()))
         .map(User::getInstance)
-        .forEach(a -> a.sendMessage("chat.island-chat.spy.syntax", TextVariables.NAME, player.getName(), "[message]", message));
+        .forEach(a -> a.sendMessage("chat.island-chat.spy.syntax", TextVariables.NAME, player.getName(), MESSAGE, message));
     }
 
     public void teamChat(final Player player, String message) {
@@ -111,7 +116,7 @@ public class ChatListener implements Listener {
         // Filter for online only
         .filter(User::isOnline)
         // Send the message to them
-        .forEach(target -> target.sendMessage("chat.team-chat.syntax", TextVariables.NAME, player.getName(), "[message]", message));
+        .forEach(target -> target.sendMessage("chat.team-chat.syntax", TextVariables.NAME, player.getName(), MESSAGE, message));
         // Log if required
         if (addon.getSettings().isLogTeamChats()) {
             addon.log("[Team Chat Log] " + player.getName() + ": " + message);
@@ -120,7 +125,7 @@ public class ChatListener implements Listener {
         Bukkit.getOnlinePlayers().stream()
         .filter(p -> spies.contains(p.getUniqueId()))
         .map(User::getInstance)
-        .forEach(u -> u.sendMessage("chat.team-chat.spy.syntax", TextVariables.NAME, player.getName(), "[message]", message));
+        .forEach(u -> u.sendMessage("chat.team-chat.spy.syntax", TextVariables.NAME, player.getName(), MESSAGE, message));
     }
 
     /**

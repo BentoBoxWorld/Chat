@@ -41,7 +41,7 @@ public class IslandChatCommand extends CompositeCommand {
 
         // Send the message directly into island chat without the need of toggling it
         // if there is existence of more arguments
-        if (args.size() > 0) {
+        if (!args.isEmpty()) {
             addon.getListener().islandChat(island, user.getPlayer(), String.join(" ", args));
             return true;
         }
