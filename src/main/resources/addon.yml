@@ -47,4 +47,14 @@ permissions:
   skygrid.chat.spy:
     description: Player can use team or island chat spy
     default: op
+
+  aoneblock.chat.team-chat:
+    description: Player can use team chat
+    default: true
+  aoneblock.chat.island-chat:
+    description: Player can create a welcome warp sign
+    default: true
+  aoneblock.chat.spy:
+    description: Player can use team or island chat spy
+    default: op
  
