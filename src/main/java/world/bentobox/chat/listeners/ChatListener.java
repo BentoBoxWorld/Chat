@@ -18,7 +18,6 @@ import world.bentobox.bentobox.api.events.team.TeamEvent;
 import world.bentobox.bentobox.api.localization.TextVariables;
 import world.bentobox.bentobox.api.user.User;
 import world.bentobox.bentobox.database.objects.Island;
-import world.bentobox.bentobox.managers.RanksManager;
 import world.bentobox.chat.Chat;
 
 /**
@@ -63,9 +62,9 @@ public class ChatListener implements Listener {
             }
         }
         addon.getIslands().getIslandAt(p.getLocation())
-                .filter(islands.keySet()::contains)
-                .filter(i -> islands.get(i).contains(p))
-                .ifPresent(i -> {
+        .filter(islands.keySet()::contains)
+        .filter(i -> islands.get(i).contains(p))
+        .ifPresent(i -> {
             // Cancel the event
             e.setCancelled(true);
             if (e.isAsynchronous()) {
@@ -109,8 +108,8 @@ public class ChatListener implements Listener {
     }
 
     public void teamChat(final Player player, String message) {
-        // Get island members of coop or above
-        addon.getIslands().getIsland(player.getWorld(), player.getUniqueId()).getMemberSet(RanksManager.COOP_RANK).stream()
+        // Get island members of member or above
+        addon.getIslands().getIsland(player.getWorld(), player.getUniqueId()).getMemberSet().stream()
         // Map to users
         .map(User::getInstance)
         // Filter for online only
