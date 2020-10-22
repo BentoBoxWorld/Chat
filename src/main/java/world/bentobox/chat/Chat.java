@@ -13,6 +13,7 @@ import world.bentobox.chat.commands.admin.AdminTeamChatSpyCommand;
 import world.bentobox.chat.commands.island.IslandChatCommand;
 import world.bentobox.chat.commands.island.IslandTeamChatCommand;
 import world.bentobox.chat.listeners.ChatListener;
+import world.bentobox.chat.requesthandlers.IsTeamChatHandler;
 
 /**
  * Provides Team/Island-Chat related features, commands and options.
@@ -42,6 +43,9 @@ public class Chat extends Addon {
         // Register listener
         listener = new ChatListener(this);
         this.registerListener(listener);
+
+        // Register request handlers
+        registerRequestHandler(new IsTeamChatHandler(this));
     }
 
     private void setupCommands() {
