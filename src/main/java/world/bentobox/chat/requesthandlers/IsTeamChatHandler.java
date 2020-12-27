@@ -16,7 +16,7 @@ public class IsTeamChatHandler extends AddonRequestHandler {
     private Chat addon;
 
     /**
-     * @param label
+     * @param addon - chat addon
      */
     public IsTeamChatHandler(Chat addon) {
         super("isTeamChat");

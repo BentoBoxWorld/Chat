@@ -14,7 +14,8 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-import world.bentobox.bentobox.api.events.team.TeamEvent;
+import world.bentobox.bentobox.api.events.team.TeamKickEvent;
+import world.bentobox.bentobox.api.events.team.TeamLeaveEvent;
 import world.bentobox.bentobox.api.localization.TextVariables;
 import world.bentobox.bentobox.api.user.User;
 import world.bentobox.bentobox.database.objects.Island;
@@ -77,7 +78,7 @@ public class ChatListener implements Listener {
 
     // Removes player from TeamChat set if he left the island
     @EventHandler
-    public void onLeave(TeamEvent.TeamLeaveEvent e) {
+    public void onLeave(TeamLeaveEvent e) {
 
         if (teamChatUsers.contains(e.getPlayerUUID()))
             teamChatUsers.remove(e.getPlayerUUID());
@@ -85,7 +86,7 @@ public class ChatListener implements Listener {
 
     // Removes player from TeamChat set if he was kicked from the island
     @EventHandler
-    public void onKick(TeamEvent.TeamKickEvent e) {
+    public void onKick(TeamKickEvent e) {
 
         if (teamChatUsers.contains(e.getPlayerUUID()))
             teamChatUsers.remove(e.getPlayerUUID());
