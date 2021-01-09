@@ -90,7 +90,7 @@ public class ChatListener implements Listener, EventExecutor {
     }
 
     // Removes player from TeamChat set if he left the island
-    @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onLeave(TeamLeaveEvent e) {
 
         if (teamChatUsers.contains(e.getPlayerUUID()))
@@ -98,7 +98,7 @@ public class ChatListener implements Listener, EventExecutor {
     }
 
     // Removes player from TeamChat set if he was kicked from the island
-    @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onKick(TeamKickEvent e) {
 
         if (teamChatUsers.contains(e.getPlayerUUID()))
