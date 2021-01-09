@@ -45,7 +45,7 @@ public class ChatListener implements Listener {
         islandSpies = new HashSet<>();
     }
 
-    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onChat(final AsyncPlayerChatEvent e) {
         Player p = e.getPlayer();
         World w = e.getPlayer().getWorld();
@@ -77,7 +77,7 @@ public class ChatListener implements Listener {
     }
 
     // Removes player from TeamChat set if he left the island
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onLeave(TeamLeaveEvent e) {
 
         if (teamChatUsers.contains(e.getPlayerUUID()))
@@ -85,7 +85,7 @@ public class ChatListener implements Listener {
     }
 
     // Removes player from TeamChat set if he was kicked from the island
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onKick(TeamKickEvent e) {
 
         if (teamChatUsers.contains(e.getPlayerUUID()))
