@@ -1,5 +1,7 @@
 package world.bentobox.chat;
 
+import org.bukkit.event.Event;
+import org.bukkit.event.EventPriority;
 import world.bentobox.bentobox.api.configuration.ConfigComment;
 import world.bentobox.bentobox.api.configuration.ConfigEntry;
 import world.bentobox.bentobox.api.configuration.ConfigObject;
@@ -7,6 +9,7 @@ import world.bentobox.bentobox.api.configuration.StoreAt;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Contains the config settings for this addon.
@@ -31,7 +34,11 @@ public class Settings implements ConfigObject {
     @ConfigEntry(path = "island-chat.log")
     private boolean logIslandChats;
 
-
+    @ConfigComment("Sets priority of AsyncPlayerChatEvent. Change this if Chat addon")
+    @ConfigComment("is conflicting with other plugins which listen to the same event")
+    @ConfigComment("Acceptable values: lowest, low, normal, high, highest, monitor")
+    @ConfigEntry(path = "chat-listener.priority")
+    private String eventPriority = "normal";
 
     public List<String> getTeamChatGamemodes() {
         return teamChatGamemodes;
@@ -75,5 +82,23 @@ public class Settings implements ConfigObject {
      */
     public void setLogIslandChats(boolean logIslandChats) {
         this.logIslandChats = logIslandChats;
+    }
+
+    public EventPriority getEventPriority() {
+
+        EventPriority priority = EventPriority.NORMAL;
+
+        try {
+            priority = EventPriority.valueOf(this.eventPriority.toUpperCase());
+        }
+        catch (IllegalArgumentException e){
+            Chat.addon.logError("EventPriority value: " + eventPriority + " is not valid in configuration. Using default: normal");
+        }
+
+        return priority;
+    }
+
+    public void setEventPriority(EventPriority eventPriority) {
+        this.eventPriority = eventPriority.toString();
     }
 }
