@@ -3,8 +3,10 @@ package world.bentobox.chat;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.bukkit.Bukkit;
 import org.bukkit.World;
 
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import world.bentobox.bentobox.api.addons.Addon;
 import world.bentobox.bentobox.api.addons.GameModeAddon;
 import world.bentobox.bentobox.api.configuration.Config;
@@ -22,6 +24,7 @@ import world.bentobox.chat.requesthandlers.IsTeamChatHandler;
 public class Chat extends Addon {
 
     // Settings and configuration
+    public static Chat addon;
     private Settings settings;
     private Config<Settings> configObject = new Config<>(this, Settings.class);
     private Set<GameModeAddon> registeredGameModes;
@@ -29,6 +32,9 @@ public class Chat extends Addon {
 
     @Override
     public void onEnable() {
+
+        addon = this;
+
         /* Config */
         // Save default config from config.yml
         saveDefaultConfig();
@@ -42,6 +48,9 @@ public class Chat extends Addon {
 
         // Register listener
         listener = new ChatListener(this);
+        // This manually registers the AsyncPlayerChatEvent with the priority from configuration
+        Bukkit.getPluginManager().registerEvent(AsyncPlayerChatEvent.class, listener, getSettings().getEventPriority(), listener, getPlugin());
+        // This will register the remaining events with @EventHandler annotation inside the listener
         this.registerListener(listener);
 
         // Register request handlers
