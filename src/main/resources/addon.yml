@@ -2,6 +2,7 @@ name: Chat
 main: world.bentobox.chat.Chat
 version: ${version}${build.number}
 icon: WRITABLE_BOOK
+api-version: 1.15.4
 
 softdepend: BSkyBlock, AcidIsland, SkyGrid, CaveBlock, AOneBlock
 

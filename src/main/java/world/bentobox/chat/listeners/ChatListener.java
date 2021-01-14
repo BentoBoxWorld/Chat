@@ -9,12 +9,15 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-import world.bentobox.bentobox.api.events.team.TeamEvent;
+import org.bukkit.plugin.EventExecutor;
+import world.bentobox.bentobox.api.events.team.TeamKickEvent;
+import world.bentobox.bentobox.api.events.team.TeamLeaveEvent;
 import world.bentobox.bentobox.api.localization.TextVariables;
 import world.bentobox.bentobox.api.user.User;
 import world.bentobox.bentobox.database.objects.Island;
@@ -25,7 +28,7 @@ import world.bentobox.chat.Chat;
  * @author tastybento
  *
  */
-public class ChatListener implements Listener {
+public class ChatListener implements Listener, EventExecutor {
 
     private static final String MESSAGE = "[message]";
     private final Chat addon;
@@ -44,8 +47,19 @@ public class ChatListener implements Listener {
         islandSpies = new HashSet<>();
     }
 
-    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+    public void execute(Listener listener, Event e) {
+
+        // Needs to be checked, as we manually registered the listener
+        // It's a replacement for ignoreCannceled = true
+        if (((AsyncPlayerChatEvent) e).isCancelled())
+            return;
+
+        // Call the event method
+        onChat((AsyncPlayerChatEvent) e);
+    }
+
     public void onChat(final AsyncPlayerChatEvent e) {
+
         Player p = e.getPlayer();
         World w = e.getPlayer().getWorld();
         // Check world
@@ -76,16 +90,16 @@ public class ChatListener implements Listener {
     }
 
     // Removes player from TeamChat set if he left the island
-    @EventHandler
-    public void onLeave(TeamEvent.TeamLeaveEvent e) {
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+    public void onLeave(TeamLeaveEvent e) {
 
         if (teamChatUsers.contains(e.getPlayerUUID()))
             teamChatUsers.remove(e.getPlayerUUID());
     }
 
     // Removes player from TeamChat set if he was kicked from the island
-    @EventHandler
-    public void onKick(TeamEvent.TeamKickEvent e) {
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+    public void onKick(TeamKickEvent e) {
 
         if (teamChatUsers.contains(e.getPlayerUUID()))
             teamChatUsers.remove(e.getPlayerUUID());
