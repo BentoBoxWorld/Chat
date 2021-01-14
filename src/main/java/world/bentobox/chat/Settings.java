@@ -1,15 +1,14 @@
 package world.bentobox.chat;
 
-import org.bukkit.event.Event;
+import java.util.Arrays;
+import java.util.List;
+
 import org.bukkit.event.EventPriority;
+
 import world.bentobox.bentobox.api.configuration.ConfigComment;
 import world.bentobox.bentobox.api.configuration.ConfigEntry;
 import world.bentobox.bentobox.api.configuration.ConfigObject;
 import world.bentobox.bentobox.api.configuration.StoreAt;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
 
 /**
  * Contains the config settings for this addon.
