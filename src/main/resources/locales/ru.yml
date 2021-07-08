@@ -1,0 +1,22 @@
+---
+chat:
+  team-chat:
+    description: включает/выключает командный чат
+    chat-on: "&a Командный чат вкл."
+    chat-off: "&a Командный чат выкл."
+    syntax: "&6[team] &a[name]&8: &f[message]"
+    spy:
+      description: переключает шпионаж на все командные чаты
+      spy-on: "&a Слежка за командным чатам вкл."
+      spy-off: "&c Слежка за командным чатам выкл."
+      syntax: "&c[team-chat-spy] &a[name]&8: [message]"
+  island-chat:
+    description: включает/выключает чат на острове
+    island-on: "&a Островной чат вкл."
+    island-off: "&c Островной чат выкл."
+    syntax: "&6[island] &a[name]&8: &f[message]"
+    spy:
+      description: переключает шпионаж на всех островных чатах
+      spy-on: "&a Слежка за островным чатом вкл."
+      spy-off: "&c Слежка за островным чатом выкл."
+      syntax: "&c [island-chat-spy] &a[name]&8: &f[message]"
