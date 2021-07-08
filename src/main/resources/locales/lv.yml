@@ -1,0 +1,22 @@
+---
+chat:
+  team-chat:
+    description: pārslēdz komandas saraksti (ieslēdz/izslēdz)
+    chat-on: "&a Komandas sarakste ieslēgta."
+    chat-off: "&a Komandas sarakste izslēgta."
+    syntax: "&6[team] &a[name]&8: &f[message]"
+    spy:
+      description: pārslēdz iespēju spiegot visas komandu sarakstes
+      spy-on: "&a Komandu sarakstšu spiegošana ieslēgta."
+      spy-off: "&c Komandu sarakstšu spiegošana izslēgta."
+      syntax: "&c[team-chat-spy] &a[name]&8: [message]"
+  island-chat:
+    description: pārslēdz salas saraksti (ieslēgt/izslēgt)
+    island-on: "&a Salas sarakste ieslēgta."
+    island-off: "&c Salas sarakste izslēgta."
+    syntax: "&6[island] &a[name]&8: &f[message]"
+    spy:
+      description: pārslēdz iespēju spiegot visas salu sarakstes
+      spy-on: "&a Salu sarakstšu spiegošana ieslēgta."
+      spy-off: "&c Salu sarakstšu spiegošana izslēgta."
+      syntax: "&c [island-chat-spy] &a[name]&8: &f[message]"
