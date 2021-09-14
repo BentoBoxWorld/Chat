@@ -1,14 +1,18 @@
-# Configuration file for Chat
+# Configuration file for Chat 1.2.0-SNAPSHOT-LOCAL.
 team-chat:
+  # Lists the gamemodes in which you want the Team Chat to be effective.
   gamemodes:
   - BSkyBlock
   - AcidIsland
   - CaveBlock
   - SkyGrid
+  # If players are outside a game world, team chat can still exist for one game mode. List it
+  # here if you want that, e.g., BSkyBlock
+  default-teamchat-gamemode: ''
   # Log team chats to console.
   log: false
 island-chat:
-  # Lists the gamemodes in which you want the Chat addon to be effective.
+  # Lists the gamemodes in which you want the Island Chat to be effective.
   gamemodes:
   - BSkyBlock
   - AcidIsland
@@ -20,4 +24,4 @@ chat-listener:
   # Sets priority of AsyncPlayerChatEvent. Change this if Chat addon
   # is conflicting with other plugins which listen to the same event
   # Acceptable values: lowest, low, normal, high, highest, monitor
-  priority: normal
+  priority: NORMAL

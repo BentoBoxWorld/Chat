@@ -47,6 +47,7 @@ public class ChatListener implements Listener, EventExecutor {
         islandSpies = new HashSet<>();
     }
 
+    @Override
     public void execute(Listener listener, Event e) {
 
         // Needs to be checked, as we manually registered the listener
@@ -61,18 +62,24 @@ public class ChatListener implements Listener, EventExecutor {
     public void onChat(final AsyncPlayerChatEvent e) {
 
         Player p = e.getPlayer();
-        World w = e.getPlayer().getWorld();
+        World ww = e.getPlayer().getWorld();
         // Check world
-        if (!addon.isRegisteredGameWorld(w)) {
-            return;
+        if (!addon.isRegisteredGameWorld(ww)) {
+            // Check to see if there is a default game mode for chat
+            if (addon.getChatWorld().isPresent()) {
+                ww = addon.getChatWorld().get();
+            } else {
+                return;
+            }
         }
+        World w = ww;
         if (teamChatUsers.contains(p.getUniqueId()) && addon.getIslands().inTeam(w, p.getUniqueId())) {
             // Cancel the event
             e.setCancelled(true);
             if (e.isAsynchronous()) {
-                Bukkit.getScheduler().runTask(addon.getPlugin(), () -> teamChat(p,e.getMessage()));
+                Bukkit.getScheduler().runTask(addon.getPlugin(), () -> teamChat(w, p, e.getMessage()));
             } else {
-                teamChat(p, e.getMessage());
+                teamChat(w, p, e.getMessage());
             }
         }
         addon.getIslands().getIslandAt(p.getLocation())
@@ -121,9 +128,9 @@ public class ChatListener implements Listener, EventExecutor {
         .forEach(a -> a.sendMessage("chat.island-chat.spy.syntax", TextVariables.NAME, player.getName(), MESSAGE, message));
     }
 
-    public void teamChat(final Player player, String message) {
+    public void teamChat(World w, final Player player, String message) {
         // Get island members of member or above
-        addon.getIslands().getIsland(player.getWorld(), player.getUniqueId()).getMemberSet().stream()
+        addon.getIslands().getIsland(w, player.getUniqueId()).getMemberSet().stream()
         // Map to users
         .map(User::getInstance)
         // Filter for online only

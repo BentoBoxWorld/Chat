@@ -18,14 +18,20 @@ import world.bentobox.bentobox.api.configuration.StoreAt;
 @ConfigComment("Configuration file for Chat [version].")
 public class Settings implements ConfigObject {
 
+    @ConfigComment("Lists the gamemodes in which you want the Team Chat to be effective.")
     @ConfigEntry(path = "team-chat.gamemodes")
     private List<String> teamChatGamemodes = Arrays.asList("BSkyBlock", "AcidIsland", "CaveBlock", "SkyGrid");
+
+    @ConfigComment("If players are outside a game world, team chat can still exist for one game mode. List it")
+    @ConfigComment("here if you want that, e.g., BSkyBlock")
+    @ConfigEntry(path = "team-chat.default-teamchat-gamemode")
+    private String defaultChatGamemode = "";
 
     @ConfigComment("Log team chats to console.")
     @ConfigEntry(path = "team-chat.log")
     private boolean logTeamChats;
 
-    @ConfigComment("Lists the gamemodes in which you want the Chat addon to be effective.")
+    @ConfigComment("Lists the gamemodes in which you want the Island Chat to be effective.")
     @ConfigEntry(path = "island-chat.gamemodes")
     private List<String> islandChatGamemodes = Arrays.asList("BSkyBlock", "AcidIsland", "CaveBlock", "SkyGrid");
 
@@ -99,5 +105,26 @@ public class Settings implements ConfigObject {
 
     public void setEventPriority(EventPriority eventPriority) {
         this.eventPriority = eventPriority.toString();
+    }
+
+    /**
+     * @return the universaleChatGamemode
+     */
+    public String getDefaultChatGamemode() {
+        return defaultChatGamemode;
+    }
+
+    /**
+     * @param universaleChatGamemode the universaleChatGamemode to set
+     */
+    public void setDefaultChatGamemode(String universaleChatGamemode) {
+        this.defaultChatGamemode = universaleChatGamemode;
+    }
+
+    /**
+     * @param eventPriority the eventPriority to set
+     */
+    public void setEventPriority(String eventPriority) {
+        this.eventPriority = eventPriority;
     }
 }
