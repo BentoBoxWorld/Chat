@@ -1,0 +1,22 @@
+---
+chat:
+  team-chat:
+    description: włącza/wyłącza czat zespołowy
+    chat-on: "&a Czat zespołu włączony."
+    chat-off: "&a Czat zespołu wyłączony."
+    syntax: "&6[team] &a[name]&8: &f[message]"
+    spy:
+      description: włącza szpiegowanie na wszystkich czatach zespołowych
+      spy-on: "&a Włączono podglądanie czatu zespołu."
+      spy-off: "&c Wyłącz szpiegowanie czatu zespołowego."
+      syntax: "&c[team-chat-spy] &a[name]&8: [message]"
+  island-chat:
+    description: włącza/wyłącza czat na wyspie
+    island-on: "&a czat na wyspie."
+    island-off: "&c Wyłączenie czatu na wyspie."
+    syntax: "&6[island] &a[name]&8: &f[message]"
+    spy:
+      description: włącza szpiegowanie na wszystkich czatach na wyspie
+      spy-on: "&a Włączono podglądanie czatu wyspy."
+      spy-off: "&c Wyłączenie szpiegowania czatu na wyspie."
+      syntax: "&c[team-chat-spy] &a[name]&8: [message]"
