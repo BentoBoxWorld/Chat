@@ -1,0 +1,21 @@
+chat:
+  team-chat:
+    description: "nyala/matikan percakapan tim"
+    chat-on: "&a Percakapan tim dinyalakan."
+    chat-off: "&a Percakapan tim dimatikan."
+    syntax: "&6[team] &a[name]&8: &f[message]"
+    spy:    
+      description: "nyala/matikan pengawasan pada semua percakapan tim"
+      spy-on: "&a Pengawasan percakapan tim dinyalakan."
+      spy-off: "&c Pengawasan percakapan tim dimatikan."
+      syntax: "&c[team-chat-spy] &a[name]&8: [message]"
+  island-chat:
+    description: "nyala/matikan percakapan pulau"
+    island-on: "&a Percakapan pulau dinyalakan."
+    island-off: "&c Percakapan pulau dimatikan."
+    syntax: "&6[island] &a[name]&8: &f[message]"
+    spy:
+      description: "nyala/matikan pengawasan pada semua percakapan pulau"
+      spy-on: "&a Pengawasan percakapan pulau dinyalakan."
+      spy-off: "&c Pengawasan percakapan pulau dimatikan."
+      syntax: "&c [island-chat-spy] &a[name]&8: &f[message]"

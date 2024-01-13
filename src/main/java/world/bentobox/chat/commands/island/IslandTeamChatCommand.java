@@ -40,7 +40,7 @@ public class IslandTeamChatCommand extends CompositeCommand {
         // Send the message directly into team chat without the need of toggling it
         // if there is existence of more arguments
         if (!args.isEmpty()) {
-            addon.getListener().teamChat(user.getPlayer(), String.join(" ", args));
+            addon.getListener().teamChat(getWorld(), user.getPlayer(), String.join(" ", args));
             return true;
         }
 

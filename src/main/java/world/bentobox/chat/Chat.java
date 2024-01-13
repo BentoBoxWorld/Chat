@@ -1,6 +1,7 @@
 package world.bentobox.chat;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import org.bukkit.Bukkit;
@@ -29,6 +30,7 @@ public class Chat extends Addon {
     private Config<Settings> configObject = new Config<>(this, Settings.class);
     private Set<GameModeAddon> registeredGameModes;
     private ChatListener listener;
+    private Optional<World> chatWorld;
 
     @Override
     public void onEnable() {
@@ -45,7 +47,10 @@ public class Chat extends Addon {
 
         /* Setup */
         setupCommands();
-
+        // Save default world
+        chatWorld = getPlugin().getAddonsManager().getGameModeAddons().stream()
+                .filter(gm -> settings.getDefaultChatGamemode().equalsIgnoreCase(gm.getDescription().getName()))
+                .findFirst().map(GameModeAddon::getOverWorld);
         // Register listener
         listener = new ChatListener(this);
         // This manually registers the AsyncPlayerChatEvent with the priority from configuration
@@ -124,5 +129,12 @@ public class Chat extends Addon {
      */
     public void setListener(ChatListener listener) {
         this.listener = listener;
+    }
+
+    /**
+     * @return the chatWorld
+     */
+    public Optional<World> getChatWorld() {
+        return chatWorld;
     }
 }
