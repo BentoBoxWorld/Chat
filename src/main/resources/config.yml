@@ -1,4 +1,4 @@
-# Configuration file for Chat 1.2.0-SNAPSHOT-LOCAL.
+# Configuration file for Chat {$version}.
 team-chat:
   # Lists the gamemodes in which you want the Team Chat to be effective.
   gamemodes:

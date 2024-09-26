@@ -33,14 +33,14 @@ public class ChatListener implements Listener, EventExecutor {
     private static final String MESSAGE = "[message]";
     private final Chat addon;
     private final Set<UUID> teamChatUsers;
-    private final Map<Island, Set<Player>> islands;
+    private final Map<Island, Set<Player>> islandChatters;
     // List of which users are spying or not on team and island chat
     private final Set<UUID> spies;
     private final Set<UUID> islandSpies;
 
     public ChatListener(Chat addon) {
         this.teamChatUsers = new HashSet<>();
-        this.islands = new HashMap<>();
+        this.islandChatters = new HashMap<>();
         this.addon = addon;
         // Initialize spies
         spies = new HashSet<>();
@@ -83,8 +83,8 @@ public class ChatListener implements Listener, EventExecutor {
             }
         }
         addon.getIslands().getIslandAt(p.getLocation())
-        .filter(islands.keySet()::contains)
-        .filter(i -> islands.get(i).contains(p))
+        .filter(islandChatters.keySet()::contains)
+        .filter(i -> islandChatters.get(i).contains(p))
         .ifPresent(i -> {
             // Cancel the event
             e.setCancelled(true);
@@ -99,17 +99,13 @@ public class ChatListener implements Listener, EventExecutor {
     // Removes player from TeamChat set if he left the island
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onLeave(TeamLeaveEvent e) {
-
-        if (teamChatUsers.contains(e.getPlayerUUID()))
-            teamChatUsers.remove(e.getPlayerUUID());
+        teamChatUsers.remove(e.getPlayerUUID());
     }
 
     // Removes player from TeamChat set if he was kicked from the island
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onKick(TeamKickEvent e) {
-
-        if (teamChatUsers.contains(e.getPlayerUUID()))
-            teamChatUsers.remove(e.getPlayerUUID());
+        teamChatUsers.remove(e.getPlayerUUID());
     }
 
     public void islandChat(Island i, Player player, String message) {
@@ -155,6 +151,20 @@ public class ChatListener implements Listener, EventExecutor {
      */
     public boolean isTeamChat(UUID playerUUID) {
         return this.teamChatUsers.contains(playerUUID);
+    }
+
+    /**
+     * Whether the player has chat on or not. Note that with multiple islands the response is true
+     * if *any* chat is enabled
+     * @param playerUUID - player's UUID
+     * @return true if chat is active on any island
+     */
+    public boolean isChat(UUID playerUUID) {
+        Player p = Bukkit.getPlayer(playerUUID);
+        if (p == null) {
+            return false;
+        }
+        return this.islandChatters.values().stream().anyMatch(playerSet -> playerSet.contains(p));
     }
 
     /**
@@ -206,20 +216,17 @@ public class ChatListener implements Listener, EventExecutor {
     /**
      * Toggle island chat state
      * @param island - island
+     * @param player - player
      * @return true if island chat is now on, otherwise false
      */
     public boolean toggleIslandChat(Island island, Player player) {
-        if (islands.containsKey(island)) {
-            if (islands.get(island).contains(player)) {
-                islands.get(island).remove(player);
-                return false;
-            }
-            islands.get(island).add(player);
-            return true;
-        }
-        else {
-            islands.put(island, new HashSet<>());
-            islands.get(island).add(player);
+        var chatters = islandChatters.computeIfAbsent(island, k -> new HashSet<>());
+
+        if (chatters.contains(player)) {
+            chatters.remove(player);
+            return false;
+        } else {
+            chatters.add(player);
             return true;
         }
     }
