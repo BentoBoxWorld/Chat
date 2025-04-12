@@ -6,6 +6,10 @@ team-chat:
   - AcidIsland
   - CaveBlock
   - SkyGrid
+  - Brix
+  - Poseidon
+  - AOneBlock
+  - Parkour
   # If players are outside a game world, team chat can still exist for one game mode. List it
   # here if you want that, e.g., BSkyBlock
   default-teamchat-gamemode: ''
@@ -18,6 +22,10 @@ island-chat:
   - AcidIsland
   - CaveBlock
   - SkyGrid
+  - Brix
+  - Poseidon
+  - AOneBlock
+  - Parkour
   # Log island chats to console.
   log: false
 chat-listener:
