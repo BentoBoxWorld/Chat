@@ -1,7 +1,9 @@
 package world.bentobox.chat.listeners;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -66,26 +68,42 @@ public class ChatListener implements Listener, EventExecutor {
     public void onChat(final AsyncPlayerChatEvent e) {
 
         Player p = e.getPlayer();
-        World ww = e.getPlayer().getWorld();
-        // Check world
-        if (!addon.isRegisteredGameWorld(ww)) {
-            // Check to see if there is a default game mode for chat
-            if (addon.getChatWorld().isPresent()) {
-                ww = addon.getChatWorld().get();
-            } else {
+        World playerWorld = e.getPlayer().getWorld();
+
+        // Determine the worlds to use for team chat
+        List<World> teamChatWorlds = new ArrayList<>();
+        if (addon.isRegisteredGameWorld(playerWorld)) {
+            teamChatWorlds.add(playerWorld);
+        } else {
+            // Check extra chat worlds config
+            teamChatWorlds.addAll(addon.getWorldsFromExtra(playerWorld.getName()));
+            // If no extra worlds matched, check default chat world
+            if (teamChatWorlds.isEmpty()) {
+                addon.getChatWorld().ifPresent(teamChatWorlds::add);
+            }
+            // If still empty, nothing to do
+            if (teamChatWorlds.isEmpty()) {
                 return;
             }
         }
-        World w = ww;
-        if (teamChatUsers.contains(p.getUniqueId()) && addon.getIslands().inTeam(w, p.getUniqueId())) {
-            // Cancel the event
-            e.setCancelled(true);
-            if (e.isAsynchronous()) {
-                Bukkit.getScheduler().runTask(addon.getPlugin(), () -> teamChat(w, p, e.getMessage()));
-            } else {
-                teamChat(w, p, e.getMessage());
+
+        // Process team chat for all matching worlds.
+        // If multiple game modes cover the same extra world, chat goes to all matching teams.
+        if (teamChatUsers.contains(p.getUniqueId())) {
+            for (World w : teamChatWorlds) {
+                if (addon.getIslands().inTeam(w, p.getUniqueId())) {
+                    // Cancel the event
+                    e.setCancelled(true);
+                    if (e.isAsynchronous()) {
+                        Bukkit.getScheduler().runTask(addon.getPlugin(), () -> teamChat(w, p, e.getMessage()));
+                    } else {
+                        teamChat(w, p, e.getMessage());
+                    }
+                }
             }
         }
+
+        // Island chat - uses physical location, only meaningful if player is on an island
         addon.getIslands().getIslandAt(p.getLocation())
         .filter(islandChatters.keySet()::contains)
         .filter(i -> islandChatters.get(i).contains(p))

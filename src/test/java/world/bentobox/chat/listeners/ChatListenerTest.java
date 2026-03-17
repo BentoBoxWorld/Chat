@@ -9,6 +9,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -155,10 +156,66 @@ public class ChatListenerTest extends CommonTestSetup {
         // Not in a registered game world
         when(addon.isRegisteredGameWorld(any(World.class))).thenReturn(false);
         when(addon.getChatWorld()).thenReturn(Optional.empty());
+        when(addon.getWorldsFromExtra(any(String.class))).thenReturn(Collections.emptyList());
 
         AsyncPlayerChatEvent event = new AsyncPlayerChatEvent(false, player, "Hello", Collections.emptySet());
         listener.onChat(event);
         assertFalse(event.isCancelled());
+    }
+
+    @Test
+    public void testOnChatExtraChatWorldTeamChat() {
+        // Player is NOT in a registered game world
+        when(addon.isRegisteredGameWorld(any(World.class))).thenReturn(false);
+        when(addon.getChatWorld()).thenReturn(Optional.empty());
+        // But the player's world is an extra chat world for BSkyBlock
+        World gameWorld = mock(World.class);
+        when(addon.getWorldsFromExtra("BSkyBlock_world")).thenReturn(List.of(gameWorld));
+
+        // Player has team chat enabled and is in a team
+        listener.togglePlayerTeamChat(uuid);
+        when(im.inTeam(gameWorld, uuid)).thenReturn(true);
+
+        AsyncPlayerChatEvent event = new AsyncPlayerChatEvent(false, player, "Hello from spawn!", Collections.emptySet());
+        listener.onChat(event);
+        // Chat should be cancelled (intercepted for team chat via extra world)
+        assertTrue(event.isCancelled());
+    }
+
+    @Test
+    public void testOnChatExtraChatWorldNoTeamChat() {
+        // Player is NOT in a registered game world
+        when(addon.isRegisteredGameWorld(any(World.class))).thenReturn(false);
+        when(addon.getChatWorld()).thenReturn(Optional.empty());
+        // The player's world is an extra chat world
+        World gameWorld = mock(World.class);
+        when(addon.getWorldsFromExtra("BSkyBlock_world")).thenReturn(List.of(gameWorld));
+
+        // Player does NOT have team chat enabled
+        AsyncPlayerChatEvent event = new AsyncPlayerChatEvent(false, player, "Hello!", Collections.emptySet());
+        when(im.getIslandAt(any())).thenReturn(Optional.empty());
+        listener.onChat(event);
+        // Not cancelled because team chat is not toggled on
+        assertFalse(event.isCancelled());
+    }
+
+    @Test
+    public void testOnChatExtraChatWorldFallsBackToDefault() {
+        // Player is NOT in a registered game world
+        when(addon.isRegisteredGameWorld(any(World.class))).thenReturn(false);
+        // No extra chat worlds match
+        when(addon.getWorldsFromExtra("BSkyBlock_world")).thenReturn(Collections.emptyList());
+        // But there is a default chat world
+        World defaultWorld = mock(World.class);
+        when(addon.getChatWorld()).thenReturn(Optional.of(defaultWorld));
+
+        // Player has team chat enabled and is in a team
+        listener.togglePlayerTeamChat(uuid);
+        when(im.inTeam(defaultWorld, uuid)).thenReturn(true);
+
+        AsyncPlayerChatEvent event = new AsyncPlayerChatEvent(false, player, "Hello default!", Collections.emptySet());
+        listener.onChat(event);
+        assertTrue(event.isCancelled());
     }
 
     @Test

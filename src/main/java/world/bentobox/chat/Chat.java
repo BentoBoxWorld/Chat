@@ -1,6 +1,9 @@
 package world.bentobox.chat;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
@@ -99,6 +102,28 @@ public class Chat extends Addon {
      */
     public boolean isRegisteredGameWorld(World world) {
         return registeredGameModes.parallelStream().anyMatch(gmw -> gmw.inWorld(world));
+    }
+
+    /**
+     * Get the game mode overworlds for team chat based on extra chat worlds configuration.
+     * If a world is listed as an extra chat world for one or more game modes, this returns
+     * the overworlds of those game modes.
+     * @param worldName - the world name to check
+     * @return list of game mode overworlds that have this world listed as extra
+     */
+    public List<World> getWorldsFromExtra(String worldName) {
+        Map<String, List<String>> extraWorlds = settings.getExtraChatWorlds();
+        List<World> result = new ArrayList<>();
+        for (Map.Entry<String, List<String>> entry : extraWorlds.entrySet()) {
+            if (entry.getValue().contains(worldName)) {
+                getPlugin().getAddonsManager().getGameModeAddons().stream()
+                        .filter(gm -> entry.getKey().equalsIgnoreCase(gm.getDescription().getName()))
+                        .findFirst()
+                        .map(GameModeAddon::getOverWorld)
+                        .ifPresent(result::add);
+            }
+        }
+        return result;
     }
 
 
