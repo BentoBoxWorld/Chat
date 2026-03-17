@@ -15,6 +15,7 @@ import world.bentobox.chat.commands.admin.AdminIslandChatSpyCommand;
 import world.bentobox.chat.commands.admin.AdminTeamChatSpyCommand;
 import world.bentobox.chat.commands.island.IslandChatCommand;
 import world.bentobox.chat.commands.island.IslandTeamChatCommand;
+import world.bentobox.chat.commands.island.IslandTeamMuteCommand;
 import world.bentobox.chat.listeners.ChatListener;
 import world.bentobox.chat.requesthandlers.IsTeamChatHandler;
 
@@ -67,6 +68,7 @@ public class Chat extends Addon {
             if (settings.getTeamChatGamemodes().contains(gameModeAddon.getDescription().getName())) {
                 log("Hooking team chat into " + gameModeAddon.getDescription().getName());
                 gameModeAddon.getPlayerCommand().ifPresent(c -> new IslandTeamChatCommand(this, c, "teamchat"));
+                gameModeAddon.getPlayerCommand().ifPresent(c -> new IslandTeamMuteCommand(this, c, "muteteamchat"));
                 gameModeAddon.getAdminCommand().ifPresent(c -> new AdminTeamChatSpyCommand(this, c, "teamchatspy"));
                 registeredGameModes.add(gameModeAddon);
             }

@@ -37,6 +37,8 @@ public class ChatListener implements Listener, EventExecutor {
     // List of which users are spying or not on team and island chat
     private final Set<UUID> spies;
     private final Set<UUID> islandSpies;
+    // List of which users have muted team chat
+    private final Set<UUID> teamChatMuted;
 
     public ChatListener(Chat addon) {
         this.teamChatUsers = new HashSet<>();
@@ -45,6 +47,8 @@ public class ChatListener implements Listener, EventExecutor {
         // Initialize spies
         spies = new HashSet<>();
         islandSpies = new HashSet<>();
+        // Initialize muted
+        teamChatMuted = new HashSet<>();
     }
 
     @Override
@@ -100,12 +104,14 @@ public class ChatListener implements Listener, EventExecutor {
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onLeave(TeamLeaveEvent e) {
         teamChatUsers.remove(e.getPlayerUUID());
+        teamChatMuted.remove(e.getPlayerUUID());
     }
 
     // Removes player from TeamChat set if he was kicked from the island
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onKick(TeamKickEvent e) {
         teamChatUsers.remove(e.getPlayerUUID());
+        teamChatMuted.remove(e.getPlayerUUID());
     }
 
     public void islandChat(Island i, Player player, String message) {
@@ -135,6 +141,8 @@ public class ChatListener implements Listener, EventExecutor {
         .map(User::getInstance)
         // Filter for online only
         .filter(User::isOnline)
+        // Filter out muted players
+        .filter(target -> !teamChatMuted.contains(target.getUniqueId()))
         // Send the message to them
         .forEach(target -> target.sendMessage("chat.team-chat.syntax", TextVariables.NAME, player.getName(), MESSAGE, message));
         // Log if required
@@ -233,6 +241,30 @@ public class ChatListener implements Listener, EventExecutor {
             chatters.add(player);
             return true;
         }
+    }
+
+    /**
+     * Toggle player's team chat mute state
+     * @param playerUUID - player's uuid
+     * @return true if team chat is now muted, otherwise false
+     */
+    public boolean toggleMuteTeamChat(UUID playerUUID) {
+        if (teamChatMuted.contains(playerUUID)) {
+            teamChatMuted.remove(playerUUID);
+            return false;
+        } else {
+            teamChatMuted.add(playerUUID);
+            return true;
+        }
+    }
+
+    /**
+     * Whether the player has muted team chat or not
+     * @param playerUUID - the player's UUID
+     * @return true if team chat is muted
+     */
+    public boolean isMutedTeamChat(UUID playerUUID) {
+        return this.teamChatMuted.contains(playerUUID);
     }
 
 }
