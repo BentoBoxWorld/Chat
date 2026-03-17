@@ -1,0 +1,25 @@
+chat:
+  team-chat:
+    description: "切換團隊聊天開關"
+    chat-on: "&a 團隊聊天已開啟."
+    chat-off: "&a 團隊聊天已關閉."
+    syntax: "&6[team] &a[name]&8: &f[message]"
+    mute:
+      description: "切換靜音團隊聊天訊息"
+      mute-on: "&c 團隊聊天已靜音."
+      mute-off: "&a 團隊聊天已取消靜音."
+    spy:
+      description: "切換監視所有團隊聊天"
+      spy-on: "&a 團隊聊天監視已開啟."
+      spy-off: "&c 團隊聊天監視已關閉."
+      syntax: "&c[team-chat-spy] &a[name]&8: [message]"
+  island-chat:
+    description: "切換島嶼聊天開關"
+    island-on: "&a 島嶼聊天已開啟."
+    island-off: "&c 島嶼聊天已關閉."
+    syntax: "&6[island] &a[name]&8: &f[message]"
+    spy:
+      description: "切換監視所有島嶼聊天"
+      spy-on: "&a 島嶼聊天監視已開啟."
+      spy-off: "&c 島嶼聊天監視已關閉."
+      syntax: "&c [island-chat-spy] &a[name]&8: &f[message]"

@@ -6,6 +6,10 @@ chat:
     chat-on: "Týmový chat zapnut"
     chat-off: "Týmový chat vypnut"
     syntax: "&6[team]&a<[name]>  &f[message]"
+    mute:
+      description: "Přepnout ztlumení zpráv týmového chatu"
+      mute-on: "&c Týmový chat ztlumen."
+      mute-off: "&a Týmový chat odztlumen."
     spy:    
       description: "Přepnout šmírování všech týmových chatů"
       spy-on: "Šmírování týmových chatů zapnuto"

@@ -2,21 +2,25 @@
 chat:
   team-chat:
     description: チームチャットのオン/オフを切り替えます
-    chat-on: "＆aチームチャット。"
-    chat-off: "＆aチームチャットオフ。"
+    chat-on: "&a チームチャット オン."
+    chat-off: "&a チームチャット オフ."
+    syntax: "&6[team] &a[name]&8: &f[message]"
+    mute:
+      description: チームチャットメッセージのミュートを切り替えます
+      mute-on: "&c チームチャットをミュートしました."
+      mute-off: "&a チームチャットのミュートを解除しました."
     spy:
       description: すべてのチームチャットのスパイを切り替えます
-      spy-on: "＆aチームチャットスパイ。"
-      spy-off: "＆cチームチャットスパイオフ。"
-      syntax: "＆c [team-chat-spy]＆a [name]＆8：[message]"
-    syntax: "＆6 [team]＆a [name＆8：＆f [message]"
+      spy-on: "&a チームチャットスパイ オン."
+      spy-off: "&c チームチャットスパイ オフ."
+      syntax: "&c[team-chat-spy] &a[name]&8: [message]"
   island-chat:
     description: アイランドチャットのオン/オフを切り替えます
+    island-on: "&a アイランドチャット オン."
+    island-off: "&c アイランドチャット オフ."
+    syntax: "&6[island] &a[name]&8: &f[message]"
     spy:
       description: すべての島のチャットのスパイを切り替えます
-      spy-on: "＆a島のチャットスパイ。"
-      syntax: "＆c [island-chat-spy]＆a [name]＆8：＆f [message]"
-      spy-off: "＆c島のチャットスパイオフ。"
-    island-on: "&a島のチャット。"
-    island-off: "＆c島のチャットオフ。"
-    syntax: "＆6 [island]＆a [name]＆8：＆f [message]"
+      spy-on: "&a アイランドチャットスパイ オン."
+      spy-off: "&c アイランドチャットスパイ オフ."
+      syntax: "&c[island-chat-spy] &a[name]&8: &f[message]"

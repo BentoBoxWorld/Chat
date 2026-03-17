@@ -4,6 +4,10 @@ chat:
     chat-on: "&a Percakapan tim dinyalakan."
     chat-off: "&a Percakapan tim dimatikan."
     syntax: "&6[team] &a[name]&8: &f[message]"
+    mute:
+      description: "nyala/matikan senyap pesan percakapan tim"
+      mute-on: "&c Percakapan tim dibisukan."
+      mute-off: "&a Percakapan tim tidak lagi dibisukan."
     spy:    
       description: "nyala/matikan pengawasan pada semua percakapan tim"
       spy-on: "&a Pengawasan percakapan tim dinyalakan."

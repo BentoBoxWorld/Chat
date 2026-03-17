@@ -4,6 +4,10 @@ chat:
     chat-on: '&a Csapat chat be.'
     chat-off: '&a Csapat chat ki.'
     syntax: '&6[team] &a[name]&8: &f[message]'
+    mute:
+      description: csapat chat üzenetek elnémítása be/ki
+      mute-on: '&c Csapat chat elnémítva.'
+      mute-off: '&a Csapat chat elnémítás feloldva.'
     spy:
       description: kémkedés állítása az összes csapat chatben
       spy-on: '&a Csapat chat kémkedés be.'

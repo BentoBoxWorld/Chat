@@ -1,0 +1,25 @@
+chat:
+  team-chat:
+    description: "ativa/desativa o chat da equipe"
+    chat-on: "&a Chat da equipe ativado."
+    chat-off: "&a Chat da equipe desativado."
+    syntax: "&6[team] &a[name]&8: &f[message]"
+    mute:
+      description: "ativa/desativa o silenciamento de mensagens do chat da equipe"
+      mute-on: "&c Chat da equipe silenciado."
+      mute-off: "&a Chat da equipe não está mais silenciado."
+    spy:
+      description: "ativa/desativa a espionagem de todos os chats da equipe"
+      spy-on: "&a Espião de chat da equipe ativado."
+      spy-off: "&c Espião de chat da equipe desativado."
+      syntax: "&c[team-chat-spy] &a[name]&8: [message]"
+  island-chat:
+    description: "ativa/desativa o chat da ilha"
+    island-on: "&a Chat da ilha ativado."
+    island-off: "&c Chat da ilha desativado."
+    syntax: "&6[island] &a[name]&8: &f[message]"
+    spy:
+      description: "ativa/desativa a espionagem de todos os chats da ilha"
+      spy-on: "&a Espião de chat da ilha ativado."
+      spy-off: "&c Espião de chat da ilha desativado."
+      syntax: "&c [island-chat-spy] &a[name]&8: &f[message]"

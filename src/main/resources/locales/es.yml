@@ -4,6 +4,10 @@ chat:
     chat-on: "&a Chat de equipo activado"
     chat-off: "&c Chat de equipo desactivado"
     syntax: "&6[team] &a[name]&8:  &f[message]"
+    mute:
+      description: "Alternar silenciar mensajes del chat de equipo"
+      mute-on: "&c Chat de equipo silenciado."
+      mute-off: "&a Chat de equipo sin silencio."
     spy:    
       description: "Alternar espiar en todos los chats de equipo"
       spy-on: "&a Chat de equipo espía activado"
