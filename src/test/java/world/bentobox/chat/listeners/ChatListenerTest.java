@@ -319,4 +319,61 @@ public class ChatListenerTest extends CommonTestSetup {
 
         assertFalse(listener.isTeamChat(uuid));
     }
+
+    // -----------------------------------------------------------------------
+    // toggleMuteTeamChat tests
+    // -----------------------------------------------------------------------
+
+    @Test
+    public void testToggleMuteTeamChatOn() {
+        UUID uid = UUID.randomUUID();
+        assertTrue(listener.toggleMuteTeamChat(uid),
+                "First toggle should mute team chat");
+    }
+
+    @Test
+    public void testToggleMuteTeamChatOff() {
+        UUID uid = UUID.randomUUID();
+        listener.toggleMuteTeamChat(uid); // mute
+        assertFalse(listener.toggleMuteTeamChat(uid),
+                "Second toggle should unmute team chat");
+    }
+
+    @Test
+    public void testIsMutedTeamChatFalseByDefault() {
+        assertFalse(listener.isMutedTeamChat(UUID.randomUUID()));
+    }
+
+    @Test
+    public void testIsMutedTeamChatTrueAfterToggle() {
+        UUID uid = UUID.randomUUID();
+        listener.toggleMuteTeamChat(uid);
+        assertTrue(listener.isMutedTeamChat(uid));
+    }
+
+    @Test
+    public void testOnLeaveRemovesMuteStatus() {
+        listener.toggleMuteTeamChat(uuid);
+        assertTrue(listener.isMutedTeamChat(uuid));
+
+        world.bentobox.bentobox.api.events.team.TeamLeaveEvent leaveEvent =
+                mock(world.bentobox.bentobox.api.events.team.TeamLeaveEvent.class);
+        when(leaveEvent.getPlayerUUID()).thenReturn(uuid);
+        listener.onLeave(leaveEvent);
+
+        assertFalse(listener.isMutedTeamChat(uuid));
+    }
+
+    @Test
+    public void testOnKickRemovesMuteStatus() {
+        listener.toggleMuteTeamChat(uuid);
+        assertTrue(listener.isMutedTeamChat(uuid));
+
+        world.bentobox.bentobox.api.events.team.TeamKickEvent kickEvent =
+                mock(world.bentobox.bentobox.api.events.team.TeamKickEvent.class);
+        when(kickEvent.getPlayerUUID()).thenReturn(uuid);
+        listener.onKick(kickEvent);
+
+        assertFalse(listener.isMutedTeamChat(uuid));
+    }
 }

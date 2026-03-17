@@ -4,6 +4,10 @@ chat:
     chat-on: "&a Team chat on."
     chat-off: "&a Team chat off."
     syntax: "&6[team] &a[name]&8: &f[message]"
+    mute:
+      description: "toggles muting team chat messages"
+      mute-on: "&c Team chat muted."
+      mute-off: "&a Team chat unmuted."
     spy:    
       description: "toggles spying on all team chats"
       spy-on: "&a Team chat spy on."
