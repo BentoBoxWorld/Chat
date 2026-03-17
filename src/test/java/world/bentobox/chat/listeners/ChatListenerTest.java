@@ -282,6 +282,8 @@ public class ChatListenerTest extends CommonTestSetup {
 
     @Test
     public void testIslandChatSendsToIslandMembers() {
+        Player.Spigot spigot = mock(Player.Spigot.class);
+        when(player.spigot()).thenReturn(spigot);
         mockedBukkit.when(org.bukkit.Bukkit::getOnlinePlayers).thenReturn(Collections.singletonList(player));
 
         // Should not throw and should complete without errors

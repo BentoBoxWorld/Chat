@@ -43,7 +43,7 @@ public class IsTeamChatHandlerTest extends CommonTestSetup {
 
     @Test
     public void testHandleLabel() {
-        assertEquals("isTeamChat", handler.getLabel());
+        assertEquals("isteamchat", handler.getLabel());
     }
 
     @Test
