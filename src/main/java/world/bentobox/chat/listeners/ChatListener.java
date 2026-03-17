@@ -83,7 +83,8 @@ public class ChatListener implements Listener, EventExecutor {
             }
         }
 
-        // Process team chat for all matching worlds
+        // Process team chat for all matching worlds.
+        // If multiple game modes cover the same extra world, chat goes to all matching teams.
         if (teamChatUsers.contains(p.getUniqueId())) {
             for (World w : teamChatWorlds) {
                 if (addon.getIslands().inTeam(w, p.getUniqueId())) {
