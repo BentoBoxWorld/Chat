@@ -13,6 +13,19 @@ team-chat:
   # If players are outside a game world, team chat can still exist for one game mode. List it
   # here if you want that, e.g., BSkyBlock
   default-teamchat-gamemode: ''
+  # Additional chat worlds. List the additional worlds for each active game mode
+  # where team chat should be captured. If more than one game mode covers a world,
+  # then chat may go to multiple teams.
+  # Example:
+  #   extra-chat-worlds:
+  #     BSkyBlock:
+  #       - world
+  #       - world_nether
+  #       - world_the_end
+  #       - spawn_world
+  #     AcidIsland:
+  #       - spawn_world
+  extra-chat-worlds: {}
   # Log team chats to console.
   log: false
 island-chat:

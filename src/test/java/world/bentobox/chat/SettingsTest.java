@@ -7,7 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.bukkit.event.EventPriority;
 import org.junit.jupiter.api.BeforeEach;
@@ -138,5 +140,23 @@ public class SettingsTest {
     public void testSetDefaultChatGamemode() {
         settings.setDefaultChatGamemode("BSkyBlock");
         assertEquals("BSkyBlock", settings.getDefaultChatGamemode());
+    }
+
+    @Test
+    public void testDefaultExtraChatWorlds() {
+        Map<String, List<String>> defaults = settings.getExtraChatWorlds();
+        assertNotNull(defaults);
+        assertTrue(defaults.isEmpty());
+    }
+
+    @Test
+    public void testSetExtraChatWorlds() {
+        Map<String, List<String>> extra = new HashMap<>();
+        extra.put("BSkyBlock", Arrays.asList("world", "spawn_world"));
+        extra.put("AcidIsland", Arrays.asList("spawn_world"));
+        settings.setExtraChatWorlds(extra);
+        assertEquals(extra, settings.getExtraChatWorlds());
+        assertEquals(2, settings.getExtraChatWorlds().get("BSkyBlock").size());
+        assertEquals(1, settings.getExtraChatWorlds().get("AcidIsland").size());
     }
 }
