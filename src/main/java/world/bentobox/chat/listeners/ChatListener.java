@@ -126,7 +126,11 @@ public class ChatListener implements Listener, EventExecutor {
 
     public void teamChat(World w, final Player player, String message) {
         // Get island members of member or above
-        addon.getIslands().getIsland(w, player.getUniqueId()).getMemberSet().stream()
+        Island island = addon.getIslands().getIsland(w, player.getUniqueId());
+        if (island == null) {
+            return;
+        }
+        island.getMemberSet().stream()
         // Map to users
         .map(User::getInstance)
         // Filter for online only
