@@ -1,0 +1,25 @@
+chat:
+  team-chat:
+    description: "ieslēdz/izslēdz komandas tērzēšanu"
+    chat-on: "&a Komandas tērzēšana ieslēgta."
+    chat-off: "&a Komandas tērzēšana izslēgta."
+    syntax: "&6[team] &a[name]&8: &f[message]"
+    mute:
+      description: "ieslēdz/izslēdz komandas tērzēšanas ziņojumu apklusināšanu"
+      mute-on: "&c Komandas tērzēšana apklusināta."
+      mute-off: "&a Komandas tērzēšanas apklusināšana atcelta."
+    spy:
+      description: "ieslēdz/izslēdz visas komandas tērzēšanas uzraudzību"
+      spy-on: "&a Komandas tērzēšanas uzraudzība ieslēgta."
+      spy-off: "&c Komandas tērzēšanas uzraudzība izslēgta."
+      syntax: "&c[team-chat-spy] &a[name]&8: [message]"
+  island-chat:
+    description: "ieslēdz/izslēdz salas tērzēšanu"
+    island-on: "&a Salas tērzēšana ieslēgta."
+    island-off: "&c Salas tērzēšana izslēgta."
+    syntax: "&6[island] &a[name]&8: &f[message]"
+    spy:
+      description: "ieslēdz/izslēdz visu salu tērzēšanas uzraudzību"
+      spy-on: "&a Salas tērzēšanas uzraudzība ieslēgta."
+      spy-off: "&c Salas tērzēšanas uzraudzība izslēgta."
+      syntax: "&c [island-chat-spy] &a[name]&8: &f[message]"

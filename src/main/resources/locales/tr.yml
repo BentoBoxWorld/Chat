@@ -8,6 +8,10 @@ chat:
     chat-on: "&aTakım sohbeti aktifleştirildi."
     chat-off: "&cTakım sohbeti kapatıldı."
     syntax: "&6[team] &a[name] &8: &f[message]"
+    mute:
+      description: "takım sohbeti mesajlarını susturmayı açar/kapatır"
+      mute-on: "&cTakım sohbeti susturuldu."
+      mute-off: "&aTakım sohbeti susturma kaldırıldı."
     spy:
       description: "takım sohbetlerini görmeni sağlar"
       spy-on: "&aTakım sohbetlerini artık görebiliyorsun."

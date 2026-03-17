@@ -4,6 +4,10 @@ chat:
     chat-on: "&a 团队聊天已开启."
     chat-off: "&a 团队聊天已关闭."
     syntax: "&6[team] &a[name]&8: &f[message]"
+    mute:
+      description: "切换静音团队聊天消息"
+      mute-on: "&c 团队聊天已静音."
+      mute-off: "&a 团队聊天已取消静音."
     spy:    
       description: "切换偷听所有团队聊天"
       spy-on: "&a 团队聊天偷听已开启."

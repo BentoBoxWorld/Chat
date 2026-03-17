@@ -1,0 +1,25 @@
+chat:
+  team-chat:
+    description: "uključuje/isključuje timski chat"
+    chat-on: "&a Timski chat uključen."
+    chat-off: "&a Timski chat isključen."
+    syntax: "&6[team] &a[name]&8: &f[message]"
+    mute:
+      description: "uključuje/isključuje nijeme poruke timskog chata"
+      mute-on: "&c Timski chat je utišan."
+      mute-off: "&a Timski chat više nije utišan."
+    spy:
+      description: "uključuje/isključuje praćenje svih timskih chatova"
+      spy-on: "&a Praćenje timskog chata uključeno."
+      spy-off: "&c Praćenje timskog chata isključeno."
+      syntax: "&c[team-chat-spy] &a[name]&8: [message]"
+  island-chat:
+    description: "uključuje/isključuje chat otoka"
+    island-on: "&a Chat otoka uključen."
+    island-off: "&c Chat otoka isključen."
+    syntax: "&6[island] &a[name]&8: &f[message]"
+    spy:
+      description: "uključuje/isključuje praćenje svih chatova otoka"
+      spy-on: "&a Praćenje chata otoka uključeno."
+      spy-off: "&c Praćenje chata otoka isključeno."
+      syntax: "&c [island-chat-spy] &a[name]&8: &f[message]"

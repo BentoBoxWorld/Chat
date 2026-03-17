@@ -4,6 +4,10 @@ chat:
     chat-on: '&aĐã bật chat đội.'
     chat-off: '&aĐã tắt chat đội.'
     syntax: '&6[team] &a[name]&8: &f[message]'
+    mute:
+      description: bật/tắt tắt tiếng tin nhắn chat đội
+      mute-on: '&cĐã tắt tiếng chat đội.'
+      mute-off: '&aĐã bỏ tắt tiếng chat đội.'
     spy:
       description: bật/tắt giám sát chat đội
       spy-on: '&aĐã bật giám sát chat đội.'

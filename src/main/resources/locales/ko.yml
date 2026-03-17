@@ -1,0 +1,25 @@
+chat:
+  team-chat:
+    description: "팀 채팅 켜기/끄기 전환"
+    chat-on: "&a 팀 채팅이 켜졌습니다."
+    chat-off: "&a 팀 채팅이 꺼졌습니다."
+    syntax: "&6[team] &a[name]&8: &f[message]"
+    mute:
+      description: "팀 채팅 메시지 음소거 전환"
+      mute-on: "&c 팀 채팅이 음소거되었습니다."
+      mute-off: "&a 팀 채팅 음소거가 해제되었습니다."
+    spy:
+      description: "모든 팀 채팅 감시 켜기/끄기 전환"
+      spy-on: "&a 팀 채팅 감시가 켜졌습니다."
+      spy-off: "&c 팀 채팅 감시가 꺼졌습니다."
+      syntax: "&c[team-chat-spy] &a[name]&8: [message]"
+  island-chat:
+    description: "섬 채팅 켜기/끄기 전환"
+    island-on: "&a 섬 채팅이 켜졌습니다."
+    island-off: "&c 섬 채팅이 꺼졌습니다."
+    syntax: "&6[island] &a[name]&8: &f[message]"
+    spy:
+      description: "모든 섬 채팅 감시 켜기/끄기 전환"
+      spy-on: "&a 섬 채팅 감시가 켜졌습니다."
+      spy-off: "&c 섬 채팅 감시가 꺼졌습니다."
+      syntax: "&c [island-chat-spy] &a[name]&8: &f[message]"
