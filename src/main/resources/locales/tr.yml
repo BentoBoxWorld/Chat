@@ -9,6 +9,7 @@ chat:
       description: "takım sohbeti mesajlarını susturmayı açar/kapatır"
       mute-on: <red>Takım sohbeti susturuldu.</red>
       mute-off: <green>Takım sohbeti susturma kaldırıldı.</green>
+      reminder: <gray>(Takım sohbeti susturuldu - susturma kaldırmak için /teamchat mute komutunu kullan)</gray>
     spy:
       description: "takım sohbetlerini görmeni sağlar"
       spy-on: <green>Takım sohbetlerini artık görebiliyorsun.</green>

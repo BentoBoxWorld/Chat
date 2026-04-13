@@ -8,6 +8,7 @@ chat:
       description: "zet het dempen van teamchat berichten aan/uit"
       mute-on: <red>Teamchat gedempt.</red>
       mute-off: <green>Teamchat niet meer gedempt.</green>
+      reminder: <gray>(Teamchat is gedempt - gebruik /teamchat mute om te ontdempen)</gray>
     spy:
       description: "zet het bespioneren van alle teamchats aan/uit"
       spy-on: <green>Teamchat spion aan.</green>

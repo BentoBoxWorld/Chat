@@ -8,6 +8,7 @@ chat:
       description: "Alternar silenciar mensajes del chat de equipo"
       mute-on: <red>Chat de equipo silenciado.</red>
       mute-off: <green>Chat de equipo sin silencio.</green>
+      reminder: <gray>(El chat de equipo está silenciado - usa /teamchat mute para desmutear)</gray>
     spy:
       description: "Alternar espiar en todos los chats de equipo"
       spy-on: <green>Chat de equipo espía activado</green>

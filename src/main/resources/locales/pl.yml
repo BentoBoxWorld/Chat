@@ -8,6 +8,7 @@ chat:
       description: "włącza/wyłącza wyciszanie wiadomości czatu drużynowego"
       mute-on: <red>Czat drużynowy wyciszony.</red>
       mute-off: <green>Czat drużynowy odciszony.</green>
+      reminder: <gray>(Czat drużynowy jest wyciszony - użyj /teamchat mute, aby go odciszyć)</gray>
     spy:
       description: "włącza/wyłącza szpiegowanie wszystkich czatów drużynowych"
       spy-on: <green>Szpiegowanie czatu drużynowego włączone.</green>

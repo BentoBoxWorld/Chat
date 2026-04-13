@@ -8,6 +8,7 @@ chat:
       description: "toggles muting team chat messages"
       mute-on: <red>Team chat muted.</red>
       mute-off: <green>Team chat unmuted.</green>
+      reminder: <gray>(Team chat is muted - use /teamchat mute to unmute)</gray>
     spy:
       description: "toggles spying on all team chats"
       spy-on: <green>Team chat spy on.</green>

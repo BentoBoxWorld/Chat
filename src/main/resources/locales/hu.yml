@@ -8,6 +8,7 @@ chat:
       description: csapat chat üzenetek elnémítása be/ki
       mute-on: <red>Csapat chat elnémítva.</red>
       mute-off: <green>Csapat chat elnémítás feloldva.</green>
+      reminder: <gray>(Csapat chat elnémítva - használd a /teamchat mute parancsot az elnémítás feloldásához)</gray>
     spy:
       description: kémkedés állítása az összes csapat chatben
       spy-on: <green>Csapat chat kémkedés be.</green>

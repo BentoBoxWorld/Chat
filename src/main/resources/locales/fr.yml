@@ -8,6 +8,7 @@ chat:
       description: "activer/désactiver la mise en sourdine des messages du chat d'équipe"
       mute-on: "<red>Chat d'équipe mis en sourdine.</red>"
       mute-off: "<green>Chat d'équipe sorti de sourdine.</green>"
+      reminder: "<gray>(Chat d'équipe mis en sourdine - utilise /teamchat mute pour sortir de la sourdine)</gray>"
     spy:
       description: "activer/désactiver la surveillance de tous les chats d'équipe"
       spy-on: "<green>Surveillance des chats d'équipe activée.</green>"

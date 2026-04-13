@@ -8,6 +8,7 @@ chat:
       description: "attiva/disattiva il silenziamento dei messaggi della chat del team"
       mute-on: <red>Chat del team silenziata.</red>
       mute-off: <green>Chat del team non più silenziata.</green>
+      reminder: <gray>(Chat del team silenziata - usa /teamchat mute per togliere il silenziamento)</gray>
     spy:
       description: "attiva/disattiva la spia su tutte le chat del team"
       spy-on: <green>Spia chat del team attivata.</green>

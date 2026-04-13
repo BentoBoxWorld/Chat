@@ -173,6 +173,12 @@ public class ChatListener implements Listener, EventExecutor {
         .filter(target -> !teamChatMuted.contains(target.getUniqueId()))
         // Send the message to them
         .forEach(target -> target.sendMessage("chat.team-chat.syntax", TextVariables.NAME, player.getName(), MESSAGE, message));
+        // Always show the sender their own message if they have muted team chat, plus a reminder
+        if (teamChatMuted.contains(player.getUniqueId())) {
+            User sender = User.getInstance(player);
+            sender.sendMessage("chat.team-chat.syntax", TextVariables.NAME, player.getName(), MESSAGE, message);
+            sender.sendMessage("chat.team-chat.mute.reminder");
+        }
         // Log if required
         if (addon.getSettings().isLogTeamChats()) {
             addon.log("[Team Chat Log] " + player.getName() + ": " + message);
@@ -245,6 +251,7 @@ public class ChatListener implements Listener, EventExecutor {
     public boolean togglePlayerTeamChat(UUID playerUUID) {
         if (teamChatUsers.contains(playerUUID)) {
             teamChatUsers.remove(playerUUID);
+            teamChatMuted.remove(playerUUID); // clear mute when team chat is toggled off
             return false;
         } else {
             teamChatUsers.add(playerUUID);

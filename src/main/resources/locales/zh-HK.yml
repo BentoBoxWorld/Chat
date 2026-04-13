@@ -8,6 +8,7 @@ chat:
       description: "切換靜音團隊聊天訊息"
       mute-on: <red>團隊聊天已靜音.</red>
       mute-off: <green>團隊聊天已取消靜音.</green>
+      reminder: <gray>(團隊聊天已靜音 - 使用 /teamchat mute 來取消靜音)</gray>
     spy:
       description: "切換監視所有團隊聊天"
       spy-on: <green>團隊聊天監視已開啟.</green>

@@ -8,6 +8,7 @@ chat:
       description: "ieslēdz/izslēdz komandas tērzēšanas ziņojumu apklusināšanu"
       mute-on: <red>Komandas tērzēšana apklusināta.</red>
       mute-off: <green>Komandas tērzēšanas apklusināšana atcelta.</green>
+      reminder: <gray>(Komandas tērzēšana apklusināta - izmanto /teamchat mute, lai atceltu apklusināšanu)</gray>
     spy:
       description: "ieslēdz/izslēdz visas komandas tērzēšanas uzraudzību"
       spy-on: <green>Komandas tērzēšanas uzraudzība ieslēgta.</green>

@@ -8,6 +8,7 @@ chat:
       description: bật/tắt tắt tiếng tin nhắn chat đội
       mute-on: <red>Đã tắt tiếng chat đội.</red>
       mute-off: <green>Đã bỏ tắt tiếng chat đội.</green>
+      reminder: <gray>(Chat đội đã bị tắt tiếng - sử dụng /teamchat mute để bỏ tắt tiếng)</gray>
     spy:
       description: bật/tắt giám sát chat đội
       spy-on: <green>Đã bật giám sát chat đội.</green>

@@ -8,6 +8,7 @@ chat:
       description: "nyala/matikan senyap pesan percakapan tim"
       mute-on: <red>Percakapan tim dibisukan.</red>
       mute-off: <green>Percakapan tim tidak lagi dibisukan.</green>
+      reminder: <gray>(Percakapan tim dibisukan - gunakan /teamchat mute untuk membatalkan bisuan)</gray>
     spy:
       description: "nyala/matikan pengawasan pada semua percakapan tim"
       spy-on: <green>Pengawasan percakapan tim dinyalakan.</green>

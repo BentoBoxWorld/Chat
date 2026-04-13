@@ -8,6 +8,7 @@ chat:
       description: "activează/dezactivează dezactivarea sunetului chat-ului de echipă"
       mute-on: <red>Chat de echipă dezactivat sonor.</red>
       mute-off: <green>Chat de echipă reactivat sonor.</green>
+      reminder: <gray>(Chat-ul de echipă este dezactivat sonor - foloseste /teamchat mute pentru reactivare sonoră)</gray>
     spy:
       description: "activează/dezactivează spionarea tuturor chat-urilor de echipă"
       spy-on: <green>Spion chat de echipă activat.</green>

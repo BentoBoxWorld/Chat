@@ -10,6 +10,7 @@ chat:
       description: "Přepnout ztlumení zpráv týmového chatu"
       mute-on: <red>Týmový chat ztlumen.</red>
       mute-off: <green>Týmový chat odztlumen.</green>
+      reminder: <gray>(Týmový chat je ztlumen - použij /teamchat mute k odtlumení)</gray>
     spy:
       description: "Přepnout šmírování všech týmových chatů"
       spy-on: <green>Šmírování týmových chatů zapnuto</green>

@@ -9,6 +9,7 @@ chat:
       description: チームチャットメッセージのミュートを切り替えます
       mute-on: <red>チームチャットをミュートしました.</red>
       mute-off: <green>チームチャットのミュートを解除しました.</green>
+      reminder: <gray>(チームチャットがミュートされています - /teamchat mute でミュートを解除してください)</gray>
     spy:
       description: すべてのチームチャットのスパイを切り替えます
       spy-on: <green>チームチャットスパイ オン.</green>

@@ -8,6 +8,7 @@ chat:
       description: "ativa/desativa o silenciamento de mensagens do chat da equipa"
       mute-on: <red>Chat da equipa silenciado.</red>
       mute-off: <green>Chat da equipa não está mais silenciado.</green>
+      reminder: <gray>(Chat da equipa está silenciado - use /teamchat mute para dessilenciar)</gray>
     spy:
       description: "ativa/desativa a espionagem de todos os chats da equipa"
       spy-on: <green>Espião de chat da equipa ativado.</green>

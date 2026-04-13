@@ -9,6 +9,7 @@ chat:
       description: "Team Chat Stummschalten ein- oder ausschalten"
       mute-on: <red>Team Chat stummgeschaltet.</red>
       mute-off: <green>Team Chat Stummschaltung aufgehoben.</green>
+      reminder: <gray>(Team Chat ist stummgeschaltet - verwende /teamchat mute zum Aufheben der Stummschaltung)</gray>
     spy:
       description: "Team Chat Socialspy ein- oder ausschalten"
       spy-on: <green>Team Chat Socialspy an.</green>

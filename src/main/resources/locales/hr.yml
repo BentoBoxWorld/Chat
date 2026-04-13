@@ -8,6 +8,7 @@ chat:
       description: "uključuje/isključuje nijeme poruke timskog chata"
       mute-on: <red>Timski chat je utišan.</red>
       mute-off: <green>Timski chat više nije utišan.</green>
+      reminder: <gray>(Timski chat je utišan - koristi /teamchat mute za aktiviranje)</gray>
     spy:
       description: "uključuje/isključuje praćenje svih timskih chatova"
       spy-on: <green>Praćenje timskog chata uključeno.</green>
