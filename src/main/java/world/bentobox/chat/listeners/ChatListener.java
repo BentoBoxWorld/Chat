@@ -121,7 +121,7 @@ public class ChatListener implements Listener, EventExecutor {
             } catch (InterruptedException ex) {
                 Thread.currentThread().interrupt();
             } catch (java.util.concurrent.ExecutionException ex) {
-                throw new RuntimeException("Failed to process async chat on the main thread", ex);
+                addon.logError("Failed to process async chat for " + p.getName() + ": " + ex.getCause());
             }
         } else if (handleChatSync(p, message)) {
             e.setCancelled(true);
