@@ -37,13 +37,6 @@ Tests use JUnit 5 + Mockito + MockBukkit. The `CommonTestSetup` base class provi
 
 Localization strings are defined in `src/main/resources/locales/` (en-US.yml is the primary locale).
 
-### JaCoCo / Java 25 note
-
-JaCoCo 0.8.12 uses ASM 9.6, which does not understand class file versions 68 or 69 (Java 24/25). When tests run under Java 25, ByteBuddy and JDK tool classes compiled at those versions are loaded at runtime and cause `Unsupported class file major version 69` errors. CI runs Java 21 and is unaffected. To get coverage locally when your default JVM is Java 25, run:
-
-```bash
-JAVA_HOME=$(/usr/libexec/java_home -v 21) mvn test
-```
 
 ## Dependency Source Lookup
 
