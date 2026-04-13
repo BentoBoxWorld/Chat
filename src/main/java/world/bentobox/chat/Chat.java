@@ -115,7 +115,7 @@ public class Chat extends Addon {
         Map<String, List<String>> extraWorlds = settings.getExtraChatWorlds();
         List<World> result = new ArrayList<>();
         for (Map.Entry<String, List<String>> entry : extraWorlds.entrySet()) {
-            if (entry.getValue().contains(worldName)) {
+            if (entry.getValue().stream().anyMatch(worldName::equalsIgnoreCase)) {
                 getPlugin().getAddonsManager().getGameModeAddons().stream()
                         .filter(gm -> entry.getKey().equalsIgnoreCase(gm.getDescription().getName()))
                         .findFirst()
