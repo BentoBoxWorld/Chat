@@ -63,8 +63,6 @@
         <junit.version>5.10.2</junit.version>
         <mockito.version>5.11.0</mockito.version>
         <mock-bukkit.version>v1.21-SNAPSHOT</mock-bukkit.version>
-        <!-- JVM used to run tests — must be Java 21 so JaCoCo can instrument Mockito mocks -->
-        <test.jvm>/opt/homebrew/Cellar/openjdk@21/21.0.9/libexec/openjdk.jdk/Contents/Home/bin/java</test.jvm>
         <!-- More visible way how to change dependency versions -->
         <paper.version>1.21.11-R0.1-SNAPSHOT</paper.version>
         <bentobox.version>3.14.0-SNAPSHOT</bentobox.version>
@@ -254,7 +252,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.5.2</version>
                 <configuration>
-                    <jvm>${test.jvm}</jvm>
                     <includes>
                         <include>**/*Test.java</include>
                         <include>**/*Test?.java</include>
@@ -343,9 +340,6 @@
                         <exclude>**/*Names*</exclude>
                         <!-- Prevents the Material is too large to mock error -->
                         <exclude>org/bukkit/Material*</exclude>
-                        <!-- Mockito generates classes at the runtime JVM version;
-                             exclude them so JaCoCo does not try to instrument them -->
-                        <exclude>org/mockito/codegen/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
