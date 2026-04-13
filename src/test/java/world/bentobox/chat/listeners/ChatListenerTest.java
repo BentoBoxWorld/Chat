@@ -321,16 +321,16 @@ public class ChatListenerTest extends CommonTestSetup {
 
     @Test
     public void testIslandChatLogsWhenEnabled() {
-        when(settings.isLogTeamChats()).thenReturn(true);
+        when(settings.isLogIslandChats()).thenReturn(true);
         mockedBukkit.when(org.bukkit.Bukkit::getOnlinePlayers).thenReturn(Collections.emptyList());
 
         listener.islandChat(island, player, "island log message");
-        verify(addon).log("[Team Chat Log] tastybento: island log message");
+        verify(addon).log("[Island Chat Log] tastybento: island log message");
     }
 
     @Test
     public void testIslandChatDoesNotLogWhenDisabled() {
-        when(settings.isLogTeamChats()).thenReturn(false);
+        when(settings.isLogIslandChats()).thenReturn(false);
         mockedBukkit.when(org.bukkit.Bukkit::getOnlinePlayers).thenReturn(Collections.emptyList());
 
         listener.islandChat(island, player, "island silent message");
