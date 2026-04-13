@@ -1,7 +1,4 @@
-meta:
-  authors:
-    - Over_Brave
-
+---
 chat:
   team-chat:
     description: "ada takım sohbetini açar/kapatır"
