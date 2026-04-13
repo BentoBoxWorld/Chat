@@ -124,12 +124,12 @@
             <releases><enabled>true</enabled></releases>
             <snapshots><enabled>true</enabled></snapshots>
         </repository>
-        <!-- BentoBox releases -->
+        <!-- BentoBox releases and snapshots -->
         <repository>
             <id>bentoboxworld</id>
             <url>https://repo.codemc.org/repository/bentoboxworld/</url>
             <releases><enabled>true</enabled></releases>
-            <snapshots><enabled>false</enabled></snapshots>
+            <snapshots><enabled>true</enabled></snapshots>
         </repository>
         <!-- CodeMC public (includes BentoBox snapshots) -->
         <repository>
