@@ -65,7 +65,7 @@
         <mock-bukkit.version>v1.21-SNAPSHOT</mock-bukkit.version>
         <!-- More visible way how to change dependency versions -->
         <paper.version>1.21.11-R0.1-SNAPSHOT</paper.version>
-        <bentobox.version>3.10.0</bentobox.version>
+        <bentobox.version>3.14.0-SNAPSHOT</bentobox.version>
         <!-- Revision variable removes warning about dynamic version -->
         <revision>${build.version}-SNAPSHOT</revision>
         <!-- Do not change unless you want different name for local builds. -->
@@ -130,6 +130,19 @@
             <url>https://repo.codemc.org/repository/bentoboxworld/</url>
             <releases><enabled>true</enabled></releases>
             <snapshots><enabled>false</enabled></snapshots>
+        </repository>
+        <!-- CodeMC public (includes BentoBox snapshots) -->
+        <repository>
+            <id>codemc-repo</id>
+            <url>https://repo.codemc.org/repository/maven-public/</url>
+            <releases><enabled>true</enabled></releases>
+            <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+        <repository>
+            <id>codemc</id>
+            <url>https://repo.codemc.org/repository/maven-snapshots/</url>
+            <releases><enabled>false</enabled></releases>
+            <snapshots><enabled>true</enabled></snapshots>
         </repository>
         <!-- Paper API snapshots -->
         <repository>
@@ -226,11 +239,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
+                <version>3.15.0</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                     <release>${java.version}</release>
+                    <fork>true</fork>
                 </configuration>
             </plugin>
             <plugin>
@@ -238,39 +252,33 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.5.2</version>
                 <configuration>
+                    <includes>
+                        <include>**/*Test.java</include>
+                        <include>**/*Test?.java</include>
+                        <include>**/*Test??.java</include>
+                    </includes>
                     <argLine>
-                        ${argLine}
                         --add-opens java.base/java.lang=ALL-UNNAMED
                         --add-opens java.base/java.math=ALL-UNNAMED
                         --add-opens java.base/java.io=ALL-UNNAMED
                         --add-opens java.base/java.util=ALL-UNNAMED
-                        --add-opens
-                        java.base/java.util.stream=ALL-UNNAMED
+                        --add-opens java.base/java.util.stream=ALL-UNNAMED
                         --add-opens java.base/java.text=ALL-UNNAMED
-                        --add-opens
-                        java.base/java.util.regex=ALL-UNNAMED
-                        --add-opens
-                        java.base/java.nio.channels.spi=ALL-UNNAMED
+                        --add-opens java.base/java.util.regex=ALL-UNNAMED
+                        --add-opens java.base/java.nio.channels.spi=ALL-UNNAMED
                         --add-opens java.base/sun.nio.ch=ALL-UNNAMED
                         --add-opens java.base/java.net=ALL-UNNAMED
-                        --add-opens
-                        java.base/java.util.concurrent=ALL-UNNAMED
+                        --add-opens java.base/java.util.concurrent=ALL-UNNAMED
                         --add-opens java.base/sun.nio.fs=ALL-UNNAMED
                         --add-opens java.base/sun.nio.cs=ALL-UNNAMED
                         --add-opens java.base/java.nio.file=ALL-UNNAMED
-                        --add-opens
-                        java.base/java.nio.charset=ALL-UNNAMED
-                        --add-opens
-                        java.base/java.lang.reflect=ALL-UNNAMED
-                        --add-opens
-                        java.logging/java.util.logging=ALL-UNNAMED
+                        --add-opens java.base/java.nio.charset=ALL-UNNAMED
+                        --add-opens java.base/java.lang.reflect=ALL-UNNAMED
+                        --add-opens java.logging/java.util.logging=ALL-UNNAMED
                         --add-opens java.base/java.lang.ref=ALL-UNNAMED
                         --add-opens java.base/java.util.jar=ALL-UNNAMED
                         --add-opens java.base/java.util.zip=ALL-UNNAMED
-                        --add-opens java.base/java.security=ALL-UNNAMED
-                        --add-opens java.base/jdk.internal.misc=ALL-UNNAMED
                     </argLine>
-
                 </configuration>
             </plugin>
             <plugin>
@@ -323,15 +331,18 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.10</version>
+                <version>0.8.12</version>
                 <configuration>
                     <append>true</append>
                     <excludes>
-                        <!-- This is required to prevent Jacoco from adding 
+                        <!-- This is required to prevent Jacoco from adding
                             synthetic fields to a JavaBean class (causes errors in testing) -->
                         <exclude>**/*Names*</exclude>
                         <!-- Prevents the Material is too large to mock error -->
                         <exclude>org/bukkit/Material*</exclude>
+                        <!-- Mockito generates classes at the runtime JVM version;
+                             exclude them so JaCoCo does not try to instrument them -->
+                        <exclude>org/mockito/codegen/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
