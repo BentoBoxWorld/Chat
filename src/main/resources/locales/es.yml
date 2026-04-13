@@ -1,25 +1,25 @@
 chat:
   team-chat:
     description: "Alternar el chat de equipo"
-    chat-on: "&a Chat de equipo activado"
-    chat-off: "&c Chat de equipo desactivado"
-    syntax: "&6[team] &a[name]&8:  &f[message]"
+    chat-on: <green>Chat de equipo activado</green>
+    chat-off: <red>Chat de equipo desactivado</red>
+    syntax: <gold>[team]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
     mute:
       description: "Alternar silenciar mensajes del chat de equipo"
-      mute-on: "&c Chat de equipo silenciado."
-      mute-off: "&a Chat de equipo sin silencio."
-    spy:    
+      mute-on: <red>Chat de equipo silenciado.</red>
+      mute-off: <green>Chat de equipo sin silencio.</green>
+    spy:
       description: "Alternar espiar en todos los chats de equipo"
-      spy-on: "&a Chat de equipo espía activado"
-      spy-off: "&c Chat de equipo espía desactivado"
-      syntax: "&c[team-chat-spy] &a[name]&8: &f[message]"
+      spy-on: <green>Chat de equipo espía activado</green>
+      spy-off: <red>Chat de equipo espía desactivado</red>
+      syntax: <red>[team-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
   island-chat:
     description: "Alternar el chat de la isla"
-    island-on: "&a Chat de isla activado"
-    island-off: "&c Chat de isla desactivado"
-    syntax: "&6[island] &a[name]&8:  &f[message]"
+    island-on: <green>Chat de isla activado</green>
+    island-off: <red>Chat de isla desactivado</red>
+    syntax: <gold>[island]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
     spy:
       description: "Alternar espiar en todos los chats de la isla"
-      spy-on: "&a Chat espia de isla activado"
-      spy-off: "&c Chat espia de isla desactivado"
-      syntax: "&c[island-chat-spy] &4[name]&8: &f[message]" 
+      spy-on: <green>Chat espia de isla activado</green>
+      spy-off: <red>Chat espia de isla desactivado</red>
+      syntax: <red>[island-chat-spy]</red> <dark_red>[name]</dark_red><dark_gray>:</dark_gray> <white>[message]</white>

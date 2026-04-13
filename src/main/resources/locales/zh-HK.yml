@@ -1,25 +1,25 @@
 chat:
   team-chat:
     description: "切換團隊聊天開關"
-    chat-on: "&a 團隊聊天已開啟."
-    chat-off: "&a 團隊聊天已關閉."
-    syntax: "&6[team] &a[name]&8: &f[message]"
+    chat-on: <green>團隊聊天已開啟.</green>
+    chat-off: <red>團隊聊天已關閉.</red>
+    syntax: <gold>[team]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
     mute:
       description: "切換靜音團隊聊天訊息"
-      mute-on: "&c 團隊聊天已靜音."
-      mute-off: "&a 團隊聊天已取消靜音."
+      mute-on: <red>團隊聊天已靜音.</red>
+      mute-off: <green>團隊聊天已取消靜音.</green>
     spy:
       description: "切換監視所有團隊聊天"
-      spy-on: "&a 團隊聊天監視已開啟."
-      spy-off: "&c 團隊聊天監視已關閉."
-      syntax: "&c[team-chat-spy] &a[name]&8: [message]"
+      spy-on: <green>團隊聊天監視已開啟.</green>
+      spy-off: <red>團隊聊天監視已關閉.</red>
+      syntax: <red>[team-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
   island-chat:
     description: "切換島嶼聊天開關"
-    island-on: "&a 島嶼聊天已開啟."
-    island-off: "&c 島嶼聊天已關閉."
-    syntax: "&6[island] &a[name]&8: &f[message]"
+    island-on: <green>島嶼聊天已開啟.</green>
+    island-off: <red>島嶼聊天已關閉.</red>
+    syntax: <gold>[island]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
     spy:
       description: "切換監視所有島嶼聊天"
-      spy-on: "&a 島嶼聊天監視已開啟."
-      spy-off: "&c 島嶼聊天監視已關閉."
-      syntax: "&c [island-chat-spy] &a[name]&8: &f[message]"
+      spy-on: <green>島嶼聊天監視已開啟.</green>
+      spy-off: <red>島嶼聊天監視已關閉.</red>
+      syntax: <red>[island-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>

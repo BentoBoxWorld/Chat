@@ -1,25 +1,25 @@
 chat:
   team-chat:
     description: "uključuje/isključuje timski chat"
-    chat-on: "&a Timski chat uključen."
-    chat-off: "&a Timski chat isključen."
-    syntax: "&6[team] &a[name]&8: &f[message]"
+    chat-on: <green>Timski chat uključen.</green>
+    chat-off: <red>Timski chat isključen.</red>
+    syntax: <gold>[team]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
     mute:
       description: "uključuje/isključuje nijeme poruke timskog chata"
-      mute-on: "&c Timski chat je utišan."
-      mute-off: "&a Timski chat više nije utišan."
+      mute-on: <red>Timski chat je utišan.</red>
+      mute-off: <green>Timski chat više nije utišan.</green>
     spy:
       description: "uključuje/isključuje praćenje svih timskih chatova"
-      spy-on: "&a Praćenje timskog chata uključeno."
-      spy-off: "&c Praćenje timskog chata isključeno."
-      syntax: "&c[team-chat-spy] &a[name]&8: [message]"
+      spy-on: <green>Praćenje timskog chata uključeno.</green>
+      spy-off: <red>Praćenje timskog chata isključeno.</red>
+      syntax: <red>[team-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
   island-chat:
     description: "uključuje/isključuje chat otoka"
-    island-on: "&a Chat otoka uključen."
-    island-off: "&c Chat otoka isključen."
-    syntax: "&6[island] &a[name]&8: &f[message]"
+    island-on: <green>Chat otoka uključen.</green>
+    island-off: <red>Chat otoka isključen.</red>
+    syntax: <gold>[island]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
     spy:
       description: "uključuje/isključuje praćenje svih chatova otoka"
-      spy-on: "&a Praćenje chata otoka uključeno."
-      spy-off: "&c Praćenje chata otoka isključeno."
-      syntax: "&c [island-chat-spy] &a[name]&8: &f[message]"
+      spy-on: <green>Praćenje chata otoka uključeno.</green>
+      spy-off: <red>Praćenje chata otoka isključeno.</red>
+      syntax: <red>[island-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>

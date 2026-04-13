@@ -1,25 +1,25 @@
 chat:
   team-chat:
     description: "вмикає/вимикає командний чат"
-    chat-on: "&a Командний чат увімкнено."
-    chat-off: "&a Командний чат вимкнено."
-    syntax: "&6[team] &a[name]&8: &f[message]"
+    chat-on: <green>Командний чат увімкнено.</green>
+    chat-off: <red>Командний чат вимкнено.</red>
+    syntax: <gold>[team]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
     mute:
       description: "вмикає/вимикає ігнорування повідомлень командного чату"
-      mute-on: "&c Командний чат заглушено."
-      mute-off: "&a Командний чат розглушено."
+      mute-on: <red>Командний чат заглушено.</red>
+      mute-off: <green>Командний чат розглушено.</green>
     spy:
       description: "вмикає/вимикає стеження за всіма командними чатами"
-      spy-on: "&a Стеження за командним чатом увімкнено."
-      spy-off: "&c Стеження за командним чатом вимкнено."
-      syntax: "&c[team-chat-spy] &a[name]&8: [message]"
+      spy-on: <green>Стеження за командним чатом увімкнено.</green>
+      spy-off: <red>Стеження за командним чатом вимкнено.</red>
+      syntax: <red>[team-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
   island-chat:
     description: "вмикає/вимикає чат острова"
-    island-on: "&a Чат острова увімкнено."
-    island-off: "&c Чат острова вимкнено."
-    syntax: "&6[island] &a[name]&8: &f[message]"
+    island-on: <green>Чат острова увімкнено.</green>
+    island-off: <red>Чат острова вимкнено.</red>
+    syntax: <gold>[island]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
     spy:
       description: "вмикає/вимикає стеження за всіма чатами острова"
-      spy-on: "&a Стеження за чатом острова увімкнено."
-      spy-off: "&c Стеження за чатом острова вимкнено."
-      syntax: "&c [island-chat-spy] &a[name]&8: &f[message]"
+      spy-on: <green>Стеження за чатом острова увімкнено.</green>
+      spy-off: <red>Стеження за чатом острова вимкнено.</red>
+      syntax: <red>[island-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>

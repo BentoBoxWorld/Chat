@@ -1,25 +1,30 @@
+# ######################################################################################## #
+# Это YML файл. Будьте осторожны при редактировании. Проверяйте свои правки                #
+# в YAML валидаторе, например, на http://yaml-online-parser.appspot.com                    #
+# ######################################################################################## #
+
 chat:
   team-chat:
-    description: "включает/выключает командный чат"
-    chat-on: "&a Командный чат включён."
-    chat-off: "&a Командный чат выключен."
-    syntax: "&6[team] &a[name]&8: &f[message]"
+    description: включает/отключает командный чат
+    chat-on: <green>Командный чат включен.</green>
+    chat-off: <red>Командный чат отключен.</red>
+    syntax: <gold>[team]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
     mute:
-      description: "включает/выключает отключение звука командного чата"
-      mute-on: "&c Командный чат заглушен."
-      mute-off: "&a Командный чат разглушен."
+      description: включает/отключает отключение звука командного чата
+      mute-on: <red>Командный чат заглушен.</red>
+      mute-off: <green>Командный чат разглушен.</green>
     spy:
-      description: "включает/выключает слежку за всеми командными чатами"
-      spy-on: "&a Слежка за командным чатом включена."
-      spy-off: "&c Слежка за командным чатом выключена."
-      syntax: "&c[team-chat-spy] &a[name]&8: [message]"
+      description: переключает шпионаж на все командные чаты
+      spy-on: <green>Слежка за командным чатам включена.</green>
+      spy-off: <red>Слежка за командным чатам отключена.</red>
+      syntax: <red>[team-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
   island-chat:
-    description: "включает/выключает чат острова"
-    island-on: "&a Чат острова включён."
-    island-off: "&c Чат острова выключен."
-    syntax: "&6[island] &a[name]&8: &f[message]"
+    description: включает/отключает островной чат
+    island-on: <green>Островной чат включен.</green>
+    island-off: <red>Островной чат отключен.</red>
+    syntax: <gold>[island]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
     spy:
-      description: "включает/выключает слежку за всеми чатами острова"
-      spy-on: "&a Слежка за чатом острова включена."
-      spy-off: "&c Слежка за чатом острова выключена."
-      syntax: "&c [island-chat-spy] &a[name]&8: &f[message]"
+      description: переключает шпионаж на все островные чаты
+      spy-on: <green>Слежка за островным чатом включена.</green>
+      spy-off: <red>Слежка за островным чатом отключена.</red>
+      syntax: <red>[island-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>

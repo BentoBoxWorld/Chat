@@ -1,25 +1,25 @@
 chat:
   team-chat:
     description: "activer/désactiver le chat d'équipe"
-    chat-on: "&a Chat d'équipe activé."
-    chat-off: "&a Chat d'équipe désactivé."
-    syntax: "&6[team] &a[name]&8: &f[message]"
+    chat-on: "<green>Chat d'équipe activé.</green>"
+    chat-off: "<red>Chat d'équipe désactivé.</red>"
+    syntax: "<gold>[team]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>"
     mute:
       description: "activer/désactiver la mise en sourdine des messages du chat d'équipe"
-      mute-on: "&c Chat d'équipe mis en sourdine."
-      mute-off: "&a Chat d'équipe sorti de sourdine."
-    spy:    
+      mute-on: "<red>Chat d'équipe mis en sourdine.</red>"
+      mute-off: "<green>Chat d'équipe sorti de sourdine.</green>"
+    spy:
       description: "activer/désactiver la surveillance de tous les chats d'équipe"
-      spy-on: "&a Surveillance des chats d'équipe activée."
-      spy-off: "&c Surveillance des chats d'équipe désactivée."
-      syntax: "&c[team-chat-spy] &a[name]&8: [message]"
+      spy-on: "<green>Surveillance des chats d'équipe activée.</green>"
+      spy-off: "<red>Surveillance des chats d'équipe désactivée.</red>"
+      syntax: "<red>[team-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>"
   island-chat:
     description: "activer/désactiver le chat d'île"
-    island-on: "&a Chat d'île activé."
-    island-off: "&c Chat d'île désactivé."
-    syntax: "&6[island] &a[name]&8: &f[message]"
+    island-on: "<green>Chat d'île activé.</green>"
+    island-off: "<red>Chat d'île désactivé.</red>"
+    syntax: "<gold>[island]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>"
     spy:
       description: "activer/désactiver la surveillance de tous les chats d'île"
-      spy-on: "&a Surveillance des chats d'île activée."
-      spy-off: "&c Surveillance des chats d'île désactivée."
-      syntax: "&c [island-chat-spy] &a[name]&8: &f[message]"
+      spy-on: "<green>Surveillance des chats d'île activée.</green>"
+      spy-off: "<red>Surveillance des chats d'île désactivée.</red>"
+      syntax: "<red>[island-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>"

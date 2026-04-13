@@ -1,25 +1,25 @@
 chat:
   team-chat:
     description: "włącza/wyłącza czat drużynowy"
-    chat-on: "&a Czat drużynowy włączony."
-    chat-off: "&a Czat drużynowy wyłączony."
-    syntax: "&6[team] &a[name]&8: &f[message]"
+    chat-on: <green>Czat drużynowy włączony.</green>
+    chat-off: <red>Czat drużynowy wyłączony.</red>
+    syntax: <gold>[team]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
     mute:
       description: "włącza/wyłącza wyciszanie wiadomości czatu drużynowego"
-      mute-on: "&c Czat drużynowy wyciszony."
-      mute-off: "&a Czat drużynowy odciszony."
+      mute-on: <red>Czat drużynowy wyciszony.</red>
+      mute-off: <green>Czat drużynowy odciszony.</green>
     spy:
       description: "włącza/wyłącza szpiegowanie wszystkich czatów drużynowych"
-      spy-on: "&a Szpiegowanie czatu drużynowego włączone."
-      spy-off: "&c Szpiegowanie czatu drużynowego wyłączone."
-      syntax: "&c[team-chat-spy] &a[name]&8: [message]"
+      spy-on: <green>Szpiegowanie czatu drużynowego włączone.</green>
+      spy-off: <red>Szpiegowanie czatu drużynowego wyłączone.</red>
+      syntax: <red>[team-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
   island-chat:
     description: "włącza/wyłącza czat wyspy"
-    island-on: "&a Czat wyspy włączony."
-    island-off: "&c Czat wyspy wyłączony."
-    syntax: "&6[island] &a[name]&8: &f[message]"
+    island-on: <green>Czat wyspy włączony.</green>
+    island-off: <red>Czat wyspy wyłączony.</red>
+    syntax: <gold>[island]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
     spy:
       description: "włącza/wyłącza szpiegowanie wszystkich czatów wyspy"
-      spy-on: "&a Szpiegowanie czatu wyspy włączone."
-      spy-off: "&c Szpiegowanie czatu wyspy wyłączone."
-      syntax: "&c [island-chat-spy] &a[name]&8: &f[message]"
+      spy-on: <green>Szpiegowanie czatu wyspy włączone.</green>
+      spy-off: <red>Szpiegowanie czatu wyspy wyłączone.</red>
+      syntax: <red>[island-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>

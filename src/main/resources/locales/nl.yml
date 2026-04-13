@@ -1,25 +1,25 @@
 chat:
   team-chat:
     description: "zet teamchat aan/uit"
-    chat-on: "&a Teamchat aan."
-    chat-off: "&a Teamchat uit."
-    syntax: "&6[team] &a[name]&8: &f[message]"
+    chat-on: <green>Teamchat aan.</green>
+    chat-off: <red>Teamchat uit.</red>
+    syntax: <gold>[team]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
     mute:
       description: "zet het dempen van teamchat berichten aan/uit"
-      mute-on: "&c Teamchat gedempt."
-      mute-off: "&a Teamchat niet meer gedempt."
+      mute-on: <red>Teamchat gedempt.</red>
+      mute-off: <green>Teamchat niet meer gedempt.</green>
     spy:
       description: "zet het bespioneren van alle teamchats aan/uit"
-      spy-on: "&a Teamchat spion aan."
-      spy-off: "&c Teamchat spion uit."
-      syntax: "&c[team-chat-spy] &a[name]&8: [message]"
+      spy-on: <green>Teamchat spion aan.</green>
+      spy-off: <red>Teamchat spion uit.</red>
+      syntax: <red>[team-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
   island-chat:
     description: "zet eilandchat aan/uit"
-    island-on: "&a Eilandchat aan."
-    island-off: "&c Eilandchat uit."
-    syntax: "&6[island] &a[name]&8: &f[message]"
+    island-on: <green>Eilandchat aan.</green>
+    island-off: <red>Eilandchat uit.</red>
+    syntax: <gold>[island]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
     spy:
       description: "zet het bespioneren van alle eilandchats aan/uit"
-      spy-on: "&a Eilandchat spion aan."
-      spy-off: "&c Eilandchat spion uit."
-      syntax: "&c [island-chat-spy] &a[name]&8: &f[message]"
+      spy-on: <green>Eilandchat spion aan.</green>
+      spy-off: <red>Eilandchat spion uit.</red>
+      syntax: <red>[island-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>

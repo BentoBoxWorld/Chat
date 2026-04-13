@@ -1,25 +1,25 @@
 chat:
   team-chat:
     description: "activează/dezactivează chat-ul de echipă"
-    chat-on: "&a Chat de echipă activat."
-    chat-off: "&a Chat de echipă dezactivat."
-    syntax: "&6[team] &a[name]&8: &f[message]"
+    chat-on: <green>Chat de echipă activat.</green>
+    chat-off: <red>Chat de echipă dezactivat.</red>
+    syntax: <gold>[team]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
     mute:
       description: "activează/dezactivează dezactivarea sunetului chat-ului de echipă"
-      mute-on: "&c Chat de echipă dezactivat sonor."
-      mute-off: "&a Chat de echipă reactivat sonor."
+      mute-on: <red>Chat de echipă dezactivat sonor.</red>
+      mute-off: <green>Chat de echipă reactivat sonor.</green>
     spy:
       description: "activează/dezactivează spionarea tuturor chat-urilor de echipă"
-      spy-on: "&a Spion chat de echipă activat."
-      spy-off: "&c Spion chat de echipă dezactivat."
-      syntax: "&c[team-chat-spy] &a[name]&8: [message]"
+      spy-on: <green>Spion chat de echipă activat.</green>
+      spy-off: <red>Spion chat de echipă dezactivat.</red>
+      syntax: <red>[team-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
   island-chat:
     description: "activează/dezactivează chat-ul de insulă"
-    island-on: "&a Chat de insulă activat."
-    island-off: "&c Chat de insulă dezactivat."
-    syntax: "&6[island] &a[name]&8: &f[message]"
+    island-on: <green>Chat de insulă activat.</green>
+    island-off: <red>Chat de insulă dezactivat.</red>
+    syntax: <gold>[island]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
     spy:
       description: "activează/dezactivează spionarea tuturor chat-urilor de insulă"
-      spy-on: "&a Spion chat de insulă activat."
-      spy-off: "&c Spion chat de insulă dezactivat."
-      syntax: "&c [island-chat-spy] &a[name]&8: &f[message]"
+      spy-on: <green>Spion chat de insulă activat.</green>
+      spy-off: <red>Spion chat de insulă dezactivat.</red>
+      syntax: <red>[island-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>

@@ -1,25 +1,25 @@
 chat:
   team-chat:
     description: "nyala/matikan percakapan tim"
-    chat-on: "&a Percakapan tim dinyalakan."
-    chat-off: "&a Percakapan tim dimatikan."
-    syntax: "&6[team] &a[name]&8: &f[message]"
+    chat-on: <green>Percakapan tim dinyalakan.</green>
+    chat-off: <red>Percakapan tim dimatikan.</red>
+    syntax: <gold>[team]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
     mute:
       description: "nyala/matikan senyap pesan percakapan tim"
-      mute-on: "&c Percakapan tim dibisukan."
-      mute-off: "&a Percakapan tim tidak lagi dibisukan."
-    spy:    
+      mute-on: <red>Percakapan tim dibisukan.</red>
+      mute-off: <green>Percakapan tim tidak lagi dibisukan.</green>
+    spy:
       description: "nyala/matikan pengawasan pada semua percakapan tim"
-      spy-on: "&a Pengawasan percakapan tim dinyalakan."
-      spy-off: "&c Pengawasan percakapan tim dimatikan."
-      syntax: "&c[team-chat-spy] &a[name]&8: [message]"
+      spy-on: <green>Pengawasan percakapan tim dinyalakan.</green>
+      spy-off: <red>Pengawasan percakapan tim dimatikan.</red>
+      syntax: <red>[team-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
   island-chat:
     description: "nyala/matikan percakapan pulau"
-    island-on: "&a Percakapan pulau dinyalakan."
-    island-off: "&c Percakapan pulau dimatikan."
-    syntax: "&6[island] &a[name]&8: &f[message]"
+    island-on: <green>Percakapan pulau dinyalakan.</green>
+    island-off: <red>Percakapan pulau dimatikan.</red>
+    syntax: <gold>[island]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
     spy:
       description: "nyala/matikan pengawasan pada semua percakapan pulau"
-      spy-on: "&a Pengawasan percakapan pulau dinyalakan."
-      spy-off: "&c Pengawasan percakapan pulau dimatikan."
-      syntax: "&c [island-chat-spy] &a[name]&8: &f[message]"
+      spy-on: <green>Pengawasan percakapan pulau dinyalakan.</green>
+      spy-off: <red>Pengawasan percakapan pulau dimatikan.</red>
+      syntax: <red>[island-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
