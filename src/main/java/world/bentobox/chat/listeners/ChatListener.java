@@ -65,10 +65,9 @@ public class ChatListener implements Listener, EventExecutor {
         onChat((AsyncPlayerChatEvent) e);
     }
 
-    public void onChat(final AsyncPlayerChatEvent e) {
-
-        Player p = e.getPlayer();
-        World playerWorld = e.getPlayer().getWorld();
+    private boolean handleChatSync(Player p, String message) {
+        boolean handled = false;
+        World playerWorld = p.getWorld();
 
         // Determine the worlds to use for team chat
         List<World> teamChatWorlds = new ArrayList<>();
@@ -81,41 +80,52 @@ public class ChatListener implements Listener, EventExecutor {
             if (teamChatWorlds.isEmpty()) {
                 addon.getChatWorld().ifPresent(teamChatWorlds::add);
             }
-            // If still empty, nothing to do
-            if (teamChatWorlds.isEmpty()) {
-                return;
-            }
         }
 
         // Process team chat for all matching worlds.
         // If multiple game modes cover the same extra world, chat goes to all matching teams.
-        if (teamChatUsers.contains(p.getUniqueId())) {
+        if (!teamChatWorlds.isEmpty() && teamChatUsers.contains(p.getUniqueId())) {
             for (World w : teamChatWorlds) {
                 if (addon.getIslands().inTeam(w, p.getUniqueId())) {
-                    // Cancel the event
-                    e.setCancelled(true);
-                    if (e.isAsynchronous()) {
-                        Bukkit.getScheduler().runTask(addon.getPlugin(), () -> teamChat(w, p, e.getMessage()));
-                    } else {
-                        teamChat(w, p, e.getMessage());
-                    }
+                    handled = true;
+                    teamChat(w, p, message);
                 }
             }
         }
 
         // Island chat - uses physical location, only meaningful if player is on an island
-        addon.getIslands().getIslandAt(p.getLocation())
-        .filter(islandChatters.keySet()::contains)
-        .filter(i -> islandChatters.get(i).contains(p))
-        .ifPresent(i -> {
-            // Cancel the event
-            e.setCancelled(true);
-            if (e.isAsynchronous()) {
-                Bukkit.getScheduler().runTask(addon.getPlugin(), () -> islandChat(i, p, e.getMessage()));
-            } else {
-                islandChat(i, p, e.getMessage());
+        Island island = addon.getIslands().getIslandAt(p.getLocation())
+                .filter(islandChatters.keySet()::contains)
+                .filter(i -> islandChatters.get(i).contains(p))
+                .orElse(null);
+        if (island != null) {
+            handled = true;
+            islandChat(island, p, message);
+        }
+
+        return handled;
+    }
+
+    public void onChat(final AsyncPlayerChatEvent e) {
+
+        Player p = e.getPlayer();
+        String message = e.getMessage();
+
+        if (e.isAsynchronous()) {
+            try {
+                Boolean handled = Bukkit.getScheduler().callSyncMethod(addon.getPlugin(),
+                        () -> handleChatSync(p, message)).get();
+                if (Boolean.TRUE.equals(handled)) {
+                    e.setCancelled(true);
+                }
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+            } catch (java.util.concurrent.ExecutionException ex) {
+                throw new RuntimeException("Failed to process async chat on the main thread", ex);
             }
-        });
+        } else if (handleChatSync(p, message)) {
+            e.setCancelled(true);
+        }
     }
 
     // Removes player from TeamChat set if he left the island
