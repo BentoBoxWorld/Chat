@@ -1,0 +1,26 @@
+chat:
+  team-chat:
+    description: "ativa/desativa o chat da equipe"
+    chat-on: <green>Chat da equipe ativado.</green>
+    chat-off: <red>Chat da equipe desativado.</red>
+    syntax: <gold>[team]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
+    mute:
+      description: "ativa/desativa o silenciamento de mensagens do chat da equipe"
+      mute-on: <red>Chat da equipe silenciado.</red>
+      mute-off: <green>Chat da equipe não está mais silenciado.</green>
+      reminder: <gray>(Chat da equipe está silenciado - use /teamchat mute para dessilenciar)</gray>
+    spy:
+      description: "ativa/desativa a espionagem de todos os chats da equipe"
+      spy-on: <green>Espião de chat da equipe ativado.</green>
+      spy-off: <red>Espião de chat da equipe desativado.</red>
+      syntax: <red>[team-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
+  island-chat:
+    description: "ativa/desativa o chat da ilha"
+    island-on: <green>Chat da ilha ativado.</green>
+    island-off: <red>Chat da ilha desativado.</red>
+    syntax: <gold>[island]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
+    spy:
+      description: "ativa/desativa a espionagem de todos os chats da ilha"
+      spy-on: <green>Espião de chat da ilha ativado.</green>
+      spy-off: <red>Espião de chat da ilha desativado.</red>
+      syntax: <red>[island-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>

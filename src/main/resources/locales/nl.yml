@@ -1,0 +1,26 @@
+chat:
+  team-chat:
+    description: "zet teamchat aan/uit"
+    chat-on: <green>Teamchat aan.</green>
+    chat-off: <red>Teamchat uit.</red>
+    syntax: <gold>[team]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
+    mute:
+      description: "zet het dempen van teamchat berichten aan/uit"
+      mute-on: <red>Teamchat gedempt.</red>
+      mute-off: <green>Teamchat niet meer gedempt.</green>
+      reminder: <gray>(Teamchat is gedempt - gebruik /teamchat mute om te ontdempen)</gray>
+    spy:
+      description: "zet het bespioneren van alle teamchats aan/uit"
+      spy-on: <green>Teamchat spion aan.</green>
+      spy-off: <red>Teamchat spion uit.</red>
+      syntax: <red>[team-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
+  island-chat:
+    description: "zet eilandchat aan/uit"
+    island-on: <green>Eilandchat aan.</green>
+    island-off: <red>Eilandchat uit.</red>
+    syntax: <gold>[island]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
+    spy:
+      description: "zet het bespioneren van alle eilandchats aan/uit"
+      spy-on: <green>Eilandchat spion aan.</green>
+      spy-off: <red>Eilandchat spion uit.</red>
+      syntax: <red>[island-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>

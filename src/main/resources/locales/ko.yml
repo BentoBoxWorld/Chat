@@ -1,0 +1,26 @@
+chat:
+  team-chat:
+    description: "팀 채팅 켜기/끄기 전환"
+    chat-on: <green>팀 채팅이 켜졌습니다.</green>
+    chat-off: <red>팀 채팅이 꺼졌습니다.</red>
+    syntax: <gold>[team]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
+    mute:
+      description: "팀 채팅 메시지 음소거 전환"
+      mute-on: <red>팀 채팅이 음소거되었습니다.</red>
+      mute-off: <green>팀 채팅 음소거가 해제되었습니다.</green>
+      reminder: <gray>(팀 채팅이 음소거되었습니다 - /teamchat mute 로 음소거를 해제하세요)</gray>
+    spy:
+      description: "모든 팀 채팅 감시 켜기/끄기 전환"
+      spy-on: <green>팀 채팅 감시가 켜졌습니다.</green>
+      spy-off: <red>팀 채팅 감시가 꺼졌습니다.</red>
+      syntax: <red>[team-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
+  island-chat:
+    description: "섬 채팅 켜기/끄기 전환"
+    island-on: <green>섬 채팅이 켜졌습니다.</green>
+    island-off: <red>섬 채팅이 꺼졌습니다.</red>
+    syntax: <gold>[island]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
+    spy:
+      description: "모든 섬 채팅 감시 켜기/끄기 전환"
+      spy-on: <green>섬 채팅 감시가 켜졌습니다.</green>
+      spy-off: <red>섬 채팅 감시가 꺼졌습니다.</red>
+      syntax: <red>[island-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>

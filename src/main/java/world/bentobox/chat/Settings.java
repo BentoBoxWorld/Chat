@@ -1,7 +1,9 @@
 package world.bentobox.chat;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.bukkit.event.EventPriority;
 
@@ -26,6 +28,12 @@ public class Settings implements ConfigObject {
     @ConfigComment("here if you want that, e.g., BSkyBlock")
     @ConfigEntry(path = "team-chat.default-teamchat-gamemode")
     private String defaultChatGamemode = "";
+
+    @ConfigComment("Additional chat worlds. List the additional worlds for each active game mode")
+    @ConfigComment("where team chat should be captured. If more than one game mode covers a world,")
+    @ConfigComment("then chat may go to multiple teams.")
+    @ConfigEntry(path = "team-chat.extra-chat-worlds")
+    private Map<String, List<String>> extraChatWorlds = new HashMap<>();
 
     @ConfigComment("Log team chats to console.")
     @ConfigEntry(path = "team-chat.log")
@@ -119,6 +127,20 @@ public class Settings implements ConfigObject {
      */
     public void setDefaultChatGamemode(String universaleChatGamemode) {
         this.defaultChatGamemode = universaleChatGamemode;
+    }
+
+    /**
+     * @return the extraChatWorlds
+     */
+    public Map<String, List<String>> getExtraChatWorlds() {
+        return extraChatWorlds;
+    }
+
+    /**
+     * @param extraChatWorlds the extraChatWorlds to set
+     */
+    public void setExtraChatWorlds(Map<String, List<String>> extraChatWorlds) {
+        this.extraChatWorlds = extraChatWorlds;
     }
 
     /**

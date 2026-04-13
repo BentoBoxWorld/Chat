@@ -2,21 +2,26 @@
 chat:
   team-chat:
     description: チームチャットのオン/オフを切り替えます
-    chat-on: "＆aチームチャット。"
-    chat-off: "＆aチームチャットオフ。"
+    chat-on: <green>チームチャット オン.</green>
+    chat-off: <red>チームチャット オフ.</red>
+    syntax: <gold>[team]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
+    mute:
+      description: チームチャットメッセージのミュートを切り替えます
+      mute-on: <red>チームチャットをミュートしました.</red>
+      mute-off: <green>チームチャットのミュートを解除しました.</green>
+      reminder: <gray>(チームチャットがミュートされています - /teamchat mute でミュートを解除してください)</gray>
     spy:
       description: すべてのチームチャットのスパイを切り替えます
-      spy-on: "＆aチームチャットスパイ。"
-      spy-off: "＆cチームチャットスパイオフ。"
-      syntax: "＆c [team-chat-spy]＆a [name]＆8：[message]"
-    syntax: "＆6 [team]＆a [name＆8：＆f [message]"
+      spy-on: <green>チームチャットスパイ オン.</green>
+      spy-off: <red>チームチャットスパイ オフ.</red>
+      syntax: <red>[team-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
   island-chat:
     description: アイランドチャットのオン/オフを切り替えます
+    island-on: <green>アイランドチャット オン.</green>
+    island-off: <red>アイランドチャット オフ.</red>
+    syntax: <gold>[island]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
     spy:
       description: すべての島のチャットのスパイを切り替えます
-      spy-on: "＆a島のチャットスパイ。"
-      syntax: "＆c [island-chat-spy]＆a [name]＆8：＆f [message]"
-      spy-off: "＆c島のチャットスパイオフ。"
-    island-on: "&a島のチャット。"
-    island-off: "＆c島のチャットオフ。"
-    syntax: "＆6 [island]＆a [name]＆8：＆f [message]"
+      spy-on: <green>アイランドチャットスパイ オン.</green>
+      spy-off: <red>アイランドチャットスパイ オフ.</red>
+      syntax: <red>[island-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>

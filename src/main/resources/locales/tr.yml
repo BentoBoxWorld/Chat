@@ -1,25 +1,27 @@
 ---
 chat:
   team-chat:
-    description: ada takım sohbetini açar/kapatır
-    chat-on: "&aTakım sohbeti aktifleştirildi."
-    chat-off: "&cTakım sohbeti kapatıldı."
-    syntax: "&6[team] &a[name] &8: &f[message]"
+    description: "ada takım sohbetini açar/kapatır"
+    chat-on: <green>Takım sohbeti aktifleştirildi.</green>
+    chat-off: <red>Takım sohbeti kapatıldı.</red>
+    syntax: <gold>[team]</gold> <green>[name]</green> <dark_gray>:</dark_gray> <white>[message]</white>
+    mute:
+      description: "takım sohbeti mesajlarını susturmayı açar/kapatır"
+      mute-on: <red>Takım sohbeti susturuldu.</red>
+      mute-off: <green>Takım sohbeti susturma kaldırıldı.</green>
+      reminder: <gray>(Takım sohbeti susturuldu - susturma kaldırmak için /teamchat mute komutunu kullan)</gray>
     spy:
-      description: takım sohbetlerini görmeni sağlar
-      spy-on: "&aTakım sohbetlerini artık görebiliyorsun."
-      spy-off: "&cTakım sohbetlerini artık göremiyorsun."
-      syntax: "&c[team-chat-spy] &a[name]&8: &f[message]"
+      description: "takım sohbetlerini görmeni sağlar"
+      spy-on: <green>Takım sohbetlerini artık görebiliyorsun.</green>
+      spy-off: <red>Takım sohbetlerini artık göremiyorsun.</red>
+      syntax: <red>[team-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
   island-chat:
-    description: ada sohbetini açar/kapatır
-    island-on: "&aAda sohbeti aktifleştirildi."
-    island-off: "&cAda sohbeti kapatıldı."
-    syntax: "&6[island] &a[name]&8: &f[message]"
+    description: "ada sohbetini açar/kapatır"
+    island-on: <green>Ada sohbeti aktifleştirildi.</green>
+    island-off: <red>Ada sohbeti kapatıldı.</red>
+    syntax: <gold>[island]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
     spy:
-      description: ada sohbetlerini görmeni sağlar
-      spy-on: "&aAda sohbetlerini artık görebiliyorsun."
-      spy-off: "&cAda sohbetlerini artık göremiyorsun."
-      syntax: "&c[island-chat-spy] &a[name]&8: &f[message]"
-meta:
-  authors:
-  - Over_Brave
+      description: "ada sohbetlerini görmeni sağlar"
+      spy-on: <green>Ada sohbetlerini artık görebiliyorsun.</green>
+      spy-off: <red>Ada sohbetlerini artık göremiyorsun.</red>
+      syntax: <red>[island-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>

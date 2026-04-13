@@ -1,7 +1,9 @@
 package world.bentobox.chat.listeners;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -37,6 +39,8 @@ public class ChatListener implements Listener, EventExecutor {
     // List of which users are spying or not on team and island chat
     private final Set<UUID> spies;
     private final Set<UUID> islandSpies;
+    // List of which users have muted team chat
+    private final Set<UUID> teamChatMuted;
 
     public ChatListener(Chat addon) {
         this.teamChatUsers = new HashSet<>();
@@ -45,6 +49,8 @@ public class ChatListener implements Listener, EventExecutor {
         // Initialize spies
         spies = new HashSet<>();
         islandSpies = new HashSet<>();
+        // Initialize muted
+        teamChatMuted = new HashSet<>();
     }
 
     @Override
@@ -59,53 +65,81 @@ public class ChatListener implements Listener, EventExecutor {
         onChat((AsyncPlayerChatEvent) e);
     }
 
+    private boolean handleChatSync(Player p, String message) {
+        boolean handled = false;
+        World playerWorld = p.getWorld();
+
+        // Determine the worlds to use for team chat
+        List<World> teamChatWorlds = new ArrayList<>();
+        if (addon.isRegisteredGameWorld(playerWorld)) {
+            teamChatWorlds.add(playerWorld);
+        } else {
+            // Check extra chat worlds config
+            teamChatWorlds.addAll(addon.getWorldsFromExtra(playerWorld.getName()));
+            // If no extra worlds matched, check default chat world
+            if (teamChatWorlds.isEmpty()) {
+                addon.getChatWorld().ifPresent(teamChatWorlds::add);
+            }
+        }
+
+        // Process team chat for all matching worlds.
+        // If multiple game modes cover the same extra world, chat goes to all matching teams.
+        if (!teamChatWorlds.isEmpty() && teamChatUsers.contains(p.getUniqueId())) {
+            for (World w : teamChatWorlds) {
+                if (addon.getIslands().inTeam(w, p.getUniqueId())) {
+                    handled = true;
+                    teamChat(w, p, message);
+                }
+            }
+        }
+
+        // Island chat - uses physical location, only meaningful if player is on an island
+        Island island = addon.getIslands().getIslandAt(p.getLocation())
+                .filter(islandChatters.keySet()::contains)
+                .filter(i -> islandChatters.get(i).contains(p))
+                .orElse(null);
+        if (island != null) {
+            handled = true;
+            islandChat(island, p, message);
+        }
+
+        return handled;
+    }
+
     public void onChat(final AsyncPlayerChatEvent e) {
 
         Player p = e.getPlayer();
-        World ww = e.getPlayer().getWorld();
-        // Check world
-        if (!addon.isRegisteredGameWorld(ww)) {
-            // Check to see if there is a default game mode for chat
-            if (addon.getChatWorld().isPresent()) {
-                ww = addon.getChatWorld().get();
-            } else {
-                return;
+        String message = e.getMessage();
+
+        if (e.isAsynchronous()) {
+            try {
+                Boolean handled = Bukkit.getScheduler().callSyncMethod(addon.getPlugin(),
+                        () -> handleChatSync(p, message)).get();
+                if (Boolean.TRUE.equals(handled)) {
+                    e.setCancelled(true);
+                }
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+            } catch (java.util.concurrent.ExecutionException ex) {
+                addon.logError("Failed to process async chat for " + p.getName() + ": " + ex.getCause());
             }
-        }
-        World w = ww;
-        if (teamChatUsers.contains(p.getUniqueId()) && addon.getIslands().inTeam(w, p.getUniqueId())) {
-            // Cancel the event
+        } else if (handleChatSync(p, message)) {
             e.setCancelled(true);
-            if (e.isAsynchronous()) {
-                Bukkit.getScheduler().runTask(addon.getPlugin(), () -> teamChat(w, p, e.getMessage()));
-            } else {
-                teamChat(w, p, e.getMessage());
-            }
         }
-        addon.getIslands().getIslandAt(p.getLocation())
-        .filter(islandChatters.keySet()::contains)
-        .filter(i -> islandChatters.get(i).contains(p))
-        .ifPresent(i -> {
-            // Cancel the event
-            e.setCancelled(true);
-            if (e.isAsynchronous()) {
-                Bukkit.getScheduler().runTask(addon.getPlugin(), () -> islandChat(i, p, e.getMessage()));
-            } else {
-                islandChat(i, p, e.getMessage());
-            }
-        });
     }
 
     // Removes player from TeamChat set if he left the island
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onLeave(TeamLeaveEvent e) {
         teamChatUsers.remove(e.getPlayerUUID());
+        teamChatMuted.remove(e.getPlayerUUID());
     }
 
     // Removes player from TeamChat set if he was kicked from the island
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onKick(TeamKickEvent e) {
         teamChatUsers.remove(e.getPlayerUUID());
+        teamChatMuted.remove(e.getPlayerUUID());
     }
 
     public void islandChat(Island i, Player player, String message) {
@@ -114,8 +148,8 @@ public class ChatListener implements Listener, EventExecutor {
         // Send message to island
         .forEach(u -> u.sendMessage("chat.island-chat.syntax", TextVariables.NAME, player.getName(), MESSAGE, message));
         // Log if required
-        if (addon.getSettings().isLogTeamChats()) {
-            addon.log("[Team Chat Log] " + player.getName() + ": " + message);
+        if (addon.getSettings().isLogIslandChats()) {
+            addon.log("[Island Chat Log] " + player.getName() + ": " + message);
         }
         // Spy if required
         Bukkit.getOnlinePlayers().stream()
@@ -126,13 +160,25 @@ public class ChatListener implements Listener, EventExecutor {
 
     public void teamChat(World w, final Player player, String message) {
         // Get island members of member or above
-        addon.getIslands().getIsland(w, player.getUniqueId()).getMemberSet().stream()
+        Island island = addon.getIslands().getIsland(w, player.getUniqueId());
+        if (island == null) {
+            return;
+        }
+        island.getMemberSet().stream()
         // Map to users
         .map(User::getInstance)
         // Filter for online only
         .filter(User::isOnline)
+        // Filter out muted players
+        .filter(target -> !teamChatMuted.contains(target.getUniqueId()))
         // Send the message to them
         .forEach(target -> target.sendMessage("chat.team-chat.syntax", TextVariables.NAME, player.getName(), MESSAGE, message));
+        // Always show the sender their own message if they have muted team chat, plus a reminder
+        if (teamChatMuted.contains(player.getUniqueId())) {
+            User sender = User.getInstance(player);
+            sender.sendMessage("chat.team-chat.syntax", TextVariables.NAME, player.getName(), MESSAGE, message);
+            sender.sendMessage("chat.team-chat.mute.reminder");
+        }
         // Log if required
         if (addon.getSettings().isLogTeamChats()) {
             addon.log("[Team Chat Log] " + player.getName() + ": " + message);
@@ -205,6 +251,7 @@ public class ChatListener implements Listener, EventExecutor {
     public boolean togglePlayerTeamChat(UUID playerUUID) {
         if (teamChatUsers.contains(playerUUID)) {
             teamChatUsers.remove(playerUUID);
+            teamChatMuted.remove(playerUUID); // clear mute when team chat is toggled off
             return false;
         } else {
             teamChatUsers.add(playerUUID);
@@ -229,6 +276,30 @@ public class ChatListener implements Listener, EventExecutor {
             chatters.add(player);
             return true;
         }
+    }
+
+    /**
+     * Toggle player's team chat mute state
+     * @param playerUUID - player's uuid
+     * @return true if team chat is now muted, otherwise false
+     */
+    public boolean toggleMuteTeamChat(UUID playerUUID) {
+        if (teamChatMuted.contains(playerUUID)) {
+            teamChatMuted.remove(playerUUID);
+            return false;
+        } else {
+            teamChatMuted.add(playerUUID);
+            return true;
+        }
+    }
+
+    /**
+     * Whether the player has muted team chat or not
+     * @param playerUUID - the player's UUID
+     * @return true if team chat is muted
+     */
+    public boolean isMutedTeamChat(UUID playerUUID) {
+        return this.teamChatMuted.contains(playerUUID);
     }
 
 }

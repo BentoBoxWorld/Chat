@@ -1,21 +1,26 @@
 chat:
   team-chat:
     description: bật/tắt chat đội
-    chat-on: '&aĐã bật chat đội.'
-    chat-off: '&aĐã tắt chat đội.'
-    syntax: '&6[team] &a[name]&8: &f[message]'
+    chat-on: <green>Đã bật chat đội.</green>
+    chat-off: <red>Đã tắt chat đội.</red>
+    syntax: <gold>[team]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
+    mute:
+      description: bật/tắt tắt tiếng tin nhắn chat đội
+      mute-on: <red>Đã tắt tiếng chat đội.</red>
+      mute-off: <green>Đã bỏ tắt tiếng chat đội.</green>
+      reminder: <gray>(Chat đội đã bị tắt tiếng - sử dụng /teamchat mute để bỏ tắt tiếng)</gray>
     spy:
       description: bật/tắt giám sát chat đội
-      spy-on: '&aĐã bật giám sát chat đội.'
-      spy-off: '&cĐã tắt giám sát chat đội.'
-      syntax: '&c[team-chat-spy] &a[name]&8: [message]'
+      spy-on: <green>Đã bật giám sát chat đội.</green>
+      spy-off: <red>Đã tắt giám sát chat đội.</red>
+      syntax: <red>[team-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
   island-chat:
     description: bật/tắt chat đảo
-    island-on: '&aĐã bật chat đảo.'
-    island-off: '&cĐã tắt chat đảo.'
-    syntax: '&6[island] &a[name]&8: &f[message]'
+    island-on: <green>Đã bật chat đảo.</green>
+    island-off: <red>Đã tắt chat đảo.</red>
+    syntax: <gold>[island]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
     spy:
       description: bật/tắt giám sát chat đảo
-      spy-on: '&aĐã bật giám sát chat đảo.'
-      spy-off: '&cĐã tắt giám sát chat đảo.'
-      syntax: '&c [island-chat-spy] &a[name]&8: &f[message]'
+      spy-on: <green>Đã bật giám sát chat đảo.</green>
+      spy-off: <red>Đã tắt giám sát chat đảo.</red>
+      syntax: <red>[island-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>

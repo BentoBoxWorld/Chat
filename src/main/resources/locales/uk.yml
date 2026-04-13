@@ -1,0 +1,26 @@
+chat:
+  team-chat:
+    description: "вмикає/вимикає командний чат"
+    chat-on: <green>Командний чат увімкнено.</green>
+    chat-off: <red>Командний чат вимкнено.</red>
+    syntax: <gold>[team]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
+    mute:
+      description: "вмикає/вимикає ігнорування повідомлень командного чату"
+      mute-on: <red>Командний чат заглушено.</red>
+      mute-off: <green>Командний чат розглушено.</green>
+      reminder: <gray>(Командний чат заглушено - використовуй /teamchat mute для розглушення)</gray>
+    spy:
+      description: "вмикає/вимикає стеження за всіма командними чатами"
+      spy-on: <green>Стеження за командним чатом увімкнено.</green>
+      spy-off: <red>Стеження за командним чатом вимкнено.</red>
+      syntax: <red>[team-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
+  island-chat:
+    description: "вмикає/вимикає чат острова"
+    island-on: <green>Чат острова увімкнено.</green>
+    island-off: <red>Чат острова вимкнено.</red>
+    syntax: <gold>[island]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
+    spy:
+      description: "вмикає/вимикає стеження за всіма чатами острова"
+      spy-on: <green>Стеження за чатом острова увімкнено.</green>
+      spy-off: <red>Стеження за чатом острова вимкнено.</red>
+      syntax: <red>[island-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>

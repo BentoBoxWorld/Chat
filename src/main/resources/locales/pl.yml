@@ -1,22 +1,26 @@
----
 chat:
   team-chat:
-    description: włącza/wyłącza czat zespołowy
-    chat-on: "&a Czat zespołu włączony."
-    chat-off: "&a Czat zespołu wyłączony."
-    syntax: "&6[team] &a[name]&8: &f[message]"
+    description: "włącza/wyłącza czat drużynowy"
+    chat-on: <green>Czat drużynowy włączony.</green>
+    chat-off: <red>Czat drużynowy wyłączony.</red>
+    syntax: <gold>[team]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
+    mute:
+      description: "włącza/wyłącza wyciszanie wiadomości czatu drużynowego"
+      mute-on: <red>Czat drużynowy wyciszony.</red>
+      mute-off: <green>Czat drużynowy odciszony.</green>
+      reminder: <gray>(Czat drużynowy jest wyciszony - użyj /teamchat mute, aby go odciszyć)</gray>
     spy:
-      description: włącza szpiegowanie na wszystkich czatach zespołowych
-      spy-on: "&a Włączono podglądanie czatu zespołu."
-      spy-off: "&c Wyłącz szpiegowanie czatu zespołowego."
-      syntax: "&c[team-chat-spy] &a[name]&8: [message]"
+      description: "włącza/wyłącza szpiegowanie wszystkich czatów drużynowych"
+      spy-on: <green>Szpiegowanie czatu drużynowego włączone.</green>
+      spy-off: <red>Szpiegowanie czatu drużynowego wyłączone.</red>
+      syntax: <red>[team-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
   island-chat:
-    description: włącza/wyłącza czat na wyspie
-    island-on: "&a czat na wyspie."
-    island-off: "&c Wyłączenie czatu na wyspie."
-    syntax: "&6[island] &a[name]&8: &f[message]"
+    description: "włącza/wyłącza czat wyspy"
+    island-on: <green>Czat wyspy włączony.</green>
+    island-off: <red>Czat wyspy wyłączony.</red>
+    syntax: <gold>[island]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
     spy:
-      description: włącza szpiegowanie na wszystkich czatach na wyspie
-      spy-on: "&a Włączono podglądanie czatu wyspy."
-      spy-off: "&c Wyłączenie szpiegowania czatu na wyspie."
-      syntax: "&c[team-chat-spy] &a[name]&8: [message]"
+      description: "włącza/wyłącza szpiegowanie wszystkich czatów wyspy"
+      spy-on: <green>Szpiegowanie czatu wyspy włączone.</green>
+      spy-off: <red>Szpiegowanie czatu wyspy wyłączone.</red>
+      syntax: <red>[island-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>

@@ -1,0 +1,26 @@
+chat:
+  team-chat:
+    description: "activează/dezactivează chat-ul de echipă"
+    chat-on: <green>Chat de echipă activat.</green>
+    chat-off: <red>Chat de echipă dezactivat.</red>
+    syntax: <gold>[team]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
+    mute:
+      description: "activează/dezactivează dezactivarea sunetului chat-ului de echipă"
+      mute-on: <red>Chat de echipă dezactivat sonor.</red>
+      mute-off: <green>Chat de echipă reactivat sonor.</green>
+      reminder: <gray>(Chat-ul de echipă este dezactivat sonor - foloseste /teamchat mute pentru reactivare sonoră)</gray>
+    spy:
+      description: "activează/dezactivează spionarea tuturor chat-urilor de echipă"
+      spy-on: <green>Spion chat de echipă activat.</green>
+      spy-off: <red>Spion chat de echipă dezactivat.</red>
+      syntax: <red>[team-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
+  island-chat:
+    description: "activează/dezactivează chat-ul de insulă"
+    island-on: <green>Chat de insulă activat.</green>
+    island-off: <red>Chat de insulă dezactivat.</red>
+    syntax: <gold>[island]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
+    spy:
+      description: "activează/dezactivează spionarea tuturor chat-urilor de insulă"
+      spy-on: <green>Spion chat de insulă activat.</green>
+      spy-off: <red>Spion chat de insulă dezactivat.</red>
+      syntax: <red>[island-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>

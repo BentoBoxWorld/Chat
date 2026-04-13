@@ -1,22 +1,26 @@
----
 chat:
   team-chat:
-    description: pārslēdz komandas saraksti (ieslēdz/izslēdz)
-    chat-on: "&a Komandas sarakste ieslēgta."
-    chat-off: "&a Komandas sarakste izslēgta."
-    syntax: "&6[team] &a[name]&8: &f[message]"
+    description: "ieslēdz/izslēdz komandas tērzēšanu"
+    chat-on: <green>Komandas tērzēšana ieslēgta.</green>
+    chat-off: <red>Komandas tērzēšana izslēgta.</red>
+    syntax: <gold>[team]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
+    mute:
+      description: "ieslēdz/izslēdz komandas tērzēšanas ziņojumu apklusināšanu"
+      mute-on: <red>Komandas tērzēšana apklusināta.</red>
+      mute-off: <green>Komandas tērzēšanas apklusināšana atcelta.</green>
+      reminder: <gray>(Komandas tērzēšana apklusināta - izmanto /teamchat mute, lai atceltu apklusināšanu)</gray>
     spy:
-      description: pārslēdz iespēju spiegot visas komandu sarakstes
-      spy-on: "&a Komandu sarakstšu spiegošana ieslēgta."
-      spy-off: "&c Komandu sarakstšu spiegošana izslēgta."
-      syntax: "&c[team-chat-spy] &a[name]&8: [message]"
+      description: "ieslēdz/izslēdz visas komandas tērzēšanas uzraudzību"
+      spy-on: <green>Komandas tērzēšanas uzraudzība ieslēgta.</green>
+      spy-off: <red>Komandas tērzēšanas uzraudzība izslēgta.</red>
+      syntax: <red>[team-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
   island-chat:
-    description: pārslēdz salas saraksti (ieslēgt/izslēgt)
-    island-on: "&a Salas sarakste ieslēgta."
-    island-off: "&c Salas sarakste izslēgta."
-    syntax: "&6[island] &a[name]&8: &f[message]"
+    description: "ieslēdz/izslēdz salas tērzēšanu"
+    island-on: <green>Salas tērzēšana ieslēgta.</green>
+    island-off: <red>Salas tērzēšana izslēgta.</red>
+    syntax: <gold>[island]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
     spy:
-      description: pārslēdz iespēju spiegot visas salu sarakstes
-      spy-on: "&a Salu sarakstšu spiegošana ieslēgta."
-      spy-off: "&c Salu sarakstšu spiegošana izslēgta."
-      syntax: "&c [island-chat-spy] &a[name]&8: &f[message]"
+      description: "ieslēdz/izslēdz visu salu tērzēšanas uzraudzību"
+      spy-on: <green>Salas tērzēšanas uzraudzība ieslēgta.</green>
+      spy-off: <red>Salas tērzēšanas uzraudzība izslēgta.</red>
+      syntax: <red>[island-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>

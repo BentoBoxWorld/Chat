@@ -1,22 +1,27 @@
 ---
 chat:
   team-chat:
-    description: Team Chat ein- oder ausschalten
-    chat-on: "&a Team Chat an."
-    chat-off: "&a Team Chat aus."
-    syntax: "&6[team] &a[name]&8: &f[message]"
+    description: "Team Chat ein- oder ausschalten"
+    chat-on: <green>Team Chat an.</green>
+    chat-off: <red>Team Chat aus.</red>
+    syntax: <gold>[team]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
+    mute:
+      description: "Team Chat Stummschalten ein- oder ausschalten"
+      mute-on: <red>Team Chat stummgeschaltet.</red>
+      mute-off: <green>Team Chat Stummschaltung aufgehoben.</green>
+      reminder: <gray>(Team Chat ist stummgeschaltet - verwende /teamchat mute zum Aufheben der Stummschaltung)</gray>
     spy:
-      description: Team Chat Socialspy ein- oder ausschalten
-      spy-on: "&a Team Chat Socialspy an."
-      spy-off: "&c Team Chat Socialspy aus."
-      syntax: "&c[team-chat-spy] &a[name]&8: [message]"
+      description: "Team Chat Socialspy ein- oder ausschalten"
+      spy-on: <green>Team Chat Socialspy an.</green>
+      spy-off: <red>Team Chat Socialspy aus.</red>
+      syntax: <red>[team-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
   island-chat:
-    description: Insel Chat ein- oder ausschalten
-    island-on: "&a Insel Chat an."
-    island-off: "&c Insel Chat aus."
-    syntax: "&6[island] &a[name]&8: &f[message]"
+    description: "Insel Chat ein- oder ausschalten"
+    island-on: <green>Insel Chat an.</green>
+    island-off: <red>Insel Chat aus.</red>
+    syntax: <gold>[island]</gold> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
     spy:
-      description: Insel Chat Socialspy ein- oder ausschalten
-      spy-on: "&a Insel Chat Socialspy aus."
-      spy-off: "&c Insel-Chats Ausspionieren aus"
-      syntax: "&c [island-chat-spy] &a[name]&8: &f[message]"
+      description: "Insel Chat Socialspy ein- oder ausschalten"
+      spy-on: <green>Insel Chat Socialspy an.</green>
+      spy-off: <red>Insel Chat Socialspy aus.</red>
+      syntax: <red>[island-chat-spy]</red> <green>[name]</green><dark_gray>:</dark_gray> <white>[message]</white>
