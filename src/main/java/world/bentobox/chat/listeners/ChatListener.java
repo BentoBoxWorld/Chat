@@ -148,8 +148,8 @@ public class ChatListener implements Listener, EventExecutor {
         // Send message to island
         .forEach(u -> u.sendMessage("chat.island-chat.syntax", TextVariables.NAME, player.getName(), MESSAGE, message));
         // Log if required
-        if (addon.getSettings().isLogTeamChats()) {
-            addon.log("[Team Chat Log] " + player.getName() + ": " + message);
+        if (addon.getSettings().isLogIslandChats()) {
+            addon.log("[Island Chat Log] " + player.getName() + ": " + message);
         }
         // Spy if required
         Bukkit.getOnlinePlayers().stream()
