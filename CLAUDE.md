@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Chat is a BentoBox addon for Minecraft (Paper/Spigot) that provides Team Chat and Island Chat for island-type game modes (BSkyBlock, AcidIsland, CaveBlock, SkyGrid). It requires Java 21 and targets Paper 1.21.x.
+Chat is a BentoBox addon for Minecraft (Paper) that provides Team Chat and Island Chat for island-type game modes (BSkyBlock, AcidIsland, CaveBlock, SkyGrid). It requires Java 21 and targets Paper 1.21.11.
 
 ## Build Commands
 
@@ -28,7 +28,7 @@ This is a **BentoBox Pladdon** (plugin-addon):
 - `IsTeamChatHandler` — BentoBox request handler that lets other addons query if a player has team chat enabled
 
 Commands follow BentoBox's `CompositeCommand` pattern and are registered dynamically onto each game mode's player/admin command trees:
-- Player: `IslandChatCommand` (chat), `IslandTeamChatCommand` (teamchat)
+- Player: `IslandChatCommand` (chat), `IslandTeamChatCommand` (teamchat), `IslandTeamMuteCommand` (muteteamchat)
 - Admin: `AdminIslandChatSpyCommand` (chatspy), `AdminTeamChatSpyCommand` (teamchatspy)
 
 ## Testing
@@ -36,3 +36,96 @@ Commands follow BentoBox's `CompositeCommand` pattern and are registered dynamic
 Tests use JUnit 5 + Mockito + MockBukkit. The `CommonTestSetup` base class provides standard mocks for BentoBox, Bukkit, Player, World, Island, etc. New test classes should extend `CommonTestSetup` and call `super.setUp()`/`super.tearDown()`. The `WhiteBox` utility sets private/static fields via reflection for test setup.
 
 Localization strings are defined in `src/main/resources/locales/` (en-US.yml is the primary locale).
+
+### JaCoCo / Java 25 note
+
+The surefire `<argLine>` intentionally does **not** include `${argLine}`. When running on Java 25, Mockito generates dynamic class files at class file version 69 (Java 25), which JaCoCo 0.8.12's ASM cannot instrument. Omitting `${argLine}` prevents the JaCoCo agent from being injected into the test JVM, avoiding the `Unsupported class file major version 69` error. JaCoCo still produces a coverage report from the compiled class files.
+
+## Dependency Source Lookup
+
+When you need to inspect source code for a dependency (e.g., BentoBox, addons):
+
+1. **Check local Maven repo first**: `~/.m2/repository/` — sources jars are named `*-sources.jar`
+2. **Check the workspace**: Look for sibling directories or Git submodules that may contain the dependency as a local project (e.g., `../bentoBox`, `../addon-*`)
+3. **Check Maven local cache for already-extracted sources** before downloading anything
+4. Only download a jar or fetch from the internet if the above steps yield nothing useful
+
+Prefer reading `.java` source files directly from a local Git clone over decompiling or extracting a jar.
+
+In general, the latest version of BentoBox should be targeted.
+
+## Project Layout
+
+Related projects are checked out as siblings under `~/git/`:
+
+**Core:**
+- `bentobox/` — core BentoBox framework
+
+**Game modes:**
+- `addon-acidisland/` — AcidIsland game mode
+- `addon-bskyblock/` — BSkyBlock game mode
+- `Boxed/` — Boxed game mode (expandable box area)
+- `CaveBlock/` — CaveBlock game mode
+- `OneBlock/` — AOneBlock game mode
+- `SkyGrid/` — SkyGrid game mode
+- `RaftMode/` — Raft survival game mode
+- `StrangerRealms/` — StrangerRealms game mode
+- `Brix/` — plot game mode
+- `parkour/` — Parkour game mode
+- `poseidon/` — Poseidon game mode
+- `gg/` — gg game mode
+
+**Addons:**
+- `addon-level/` — island level calculation
+- `addon-challenges/` — challenges system
+- `addon-welcomewarpsigns/` — warp signs
+- `addon-limits/` — block/entity limits
+- `addon-invSwitcher/` / `invSwitcher/` — inventory switcher
+- `addon-biomes/` / `Biomes/` — biomes management
+- `Bank/` — island bank
+- `Border/` — world border for islands
+- `Chat/` — island chat
+- `CheckMeOut/` — island submission/voting
+- `ControlPanel/` — game mode control panel
+- `Converter/` — ASkyBlock to BSkyBlock converter
+- `DimensionalTrees/` — dimension-specific trees
+- `discordwebhook/` — Discord integration
+- `Downloads/` — BentoBox downloads site
+- `DragonFights/` — per-island ender dragon fights
+- `ExtraMobs/` — additional mob spawning rules
+- `FarmersDance/` — twerking crop growth
+- `GravityFlux/` — gravity addon
+- `Greenhouses-addon/` — greenhouse biomes
+- `IslandFly/` — island flight permission
+- `IslandRankup/` — island rankup system
+- `Likes/` — island likes/dislikes
+- `Limits/` — block/entity limits
+- `lost-sheep/` — lost sheep adventure
+- `MagicCobblestoneGenerator/` — custom cobblestone generator
+- `PortalStart/` — portal-based island start
+- `pp/` — pp addon
+- `Regionerator/` — region management
+- `Residence/` — residence addon
+- `TopBlock/` — top ten for OneBlock
+- `TwerkingForTrees/` — twerking tree growth
+- `Upgrades/` — island upgrades (Vault)
+- `Visit/` — island visiting
+- `weblink/` — web link addon
+- `CrowdBound/` — CrowdBound addon
+
+**Data packs:**
+- `BoxedDataPack/` — advancement datapack for Boxed
+
+**Documentation & tools:**
+- `docs/` — main documentation site
+- `docs-chinese/` — Chinese documentation
+- `docs-french/` — French documentation
+- `BentoBoxWorld.github.io/` — GitHub Pages site
+- `website/` — website
+- `translation-tool/` — translation tool
+
+Check these for source before any network fetch.
+
+## Key Dependencies (source locations)
+
+- `world.bentobox:bentobox` `3.14.0-SNAPSHOT` → `~/git/bentobox/src/`
