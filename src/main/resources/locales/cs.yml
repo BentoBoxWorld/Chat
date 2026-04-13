@@ -14,7 +14,7 @@ chat:
       description: "Přepnout šmírování všech týmových chatů"
       spy-on: <green>Šmírování týmových chatů zapnuto</green>
       spy-off: <red>Šmírování týmových chatů vypnuto</red>
-      syntax: <red>[team-chat-spy]</red> <dark_red>[name]</dark_red>: [message]
+      syntax: "<red>[team-chat-spy]</red> <dark_red>[name]</dark_red>: [message]"
   island-chat:
     description: "Přepnout chat na ostrově zapnuto/vypnuto"
     island-on: <green>Chat na ostrově zapnut</green>
