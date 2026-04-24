@@ -25,4 +25,4 @@ chat:
       description: "Přepnout šmírování chatů na všech ostrovech"
       spy-on: <green>Šmírování chatů na ostrovech zapnuto</green>
       spy-off: <red>Šmírování chatů na ostrovech vypnuto</red>
-      syntax: <red>[island-chat-spy]</red> <dark_red>[name]</dark_red>: [message]
+      syntax: "<red>[island-chat-spy]</red> <dark_red>[name]</dark_red>: [message]"
