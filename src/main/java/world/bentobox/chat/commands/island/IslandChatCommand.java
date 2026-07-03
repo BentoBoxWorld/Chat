@@ -2,8 +2,6 @@ package world.bentobox.chat.commands.island;
 
 import java.util.List;
 
-import org.eclipse.jdt.annotation.Nullable;
-
 import world.bentobox.bentobox.api.commands.CompositeCommand;
 import world.bentobox.bentobox.api.user.User;
 import world.bentobox.bentobox.database.objects.Island;
@@ -13,8 +11,6 @@ import world.bentobox.chat.Chat;
  * @author tastybento
  */
 public class IslandChatCommand extends CompositeCommand {
-
-    private @Nullable Island island;
 
     public IslandChatCommand(Chat addon, CompositeCommand parent, String label) {
         super(addon, parent, label);
@@ -30,14 +26,22 @@ public class IslandChatCommand extends CompositeCommand {
 
     @Override
     public boolean canExecute(User user, String label, List<String> args) {
-
-        island = this.getIslands().getIslandAt(user.getLocation()).orElse(null);
-        return island != null;
+        // Command instances are shared across all players, so the resolved island must not be
+        // cached on an instance field here (e.g. player A's island could otherwise leak into
+        // player B's execute() call) - it is recomputed per-player in execute() instead.
+        return this.getIslands().getIslandAt(user.getLocation()).isPresent();
     }
 
     @Override
     public boolean execute(User user, String label, List<String> args) {
         Chat addon = this.getAddon();
+
+        // Resolve the island fresh for this specific invocation, since this command
+        // instance is shared by all players and must not rely on state set in canExecute().
+        Island island = this.getIslands().getIslandAt(user.getLocation()).orElse(null);
+        if (island == null) {
+            return false;
+        }
 
         // Send the message directly into island chat without the need of toggling it
         // if there is existence of more arguments
