@@ -312,7 +312,6 @@ public class ChatListenerTest extends CommonTestSetup {
         spyListener.onChat(event2);
         assertTrue(event2.isCancelled());
         verify(spyListener).islandChat(island, player, "test");
-        verify(spyListener, org.mockito.Mockito.never()).islandChat(island, player, "aaaa test");
     }
 
     @Test

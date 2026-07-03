@@ -27,7 +27,8 @@ public class IslandChatCommand extends CompositeCommand {
     @Override
     public boolean canExecute(User user, String label, List<String> args) {
         // Command instances are shared across all players, so the resolved island must not be
-        // cached on an instance field here - it is recomputed per-player in execute() instead.
+        // cached on an instance field here (e.g. player A's island could otherwise leak into
+        // player B's execute() call) - it is recomputed per-player in execute() instead.
         return this.getIslands().getIslandAt(user.getLocation()).isPresent();
     }
 
