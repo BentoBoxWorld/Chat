@@ -272,6 +272,69 @@ public class ChatListenerTest extends CommonTestSetup {
     }
 
     // -----------------------------------------------------------------------
+    // onChat asynchronous tests - regression tests for repeating message bug
+    // -----------------------------------------------------------------------
+
+    /**
+     * Stubs the scheduler so that {@code callSyncMethod} runs the given callable
+     * immediately (as if the next server tick had already happened) and returns
+     * an already completed future, mimicking the real Bukkit scheduler behaviour
+     * closely enough for the async {@link ChatListener#onChat(AsyncPlayerChatEvent)}
+     * code path to be exercised in a unit test.
+     */
+    private void stubSyncScheduler() {
+        when(sch.callSyncMethod(any(), any())).thenAnswer(invocation -> {
+            java.util.concurrent.Callable<?> callable = invocation.getArgument(1);
+            try {
+                return java.util.concurrent.CompletableFuture.completedFuture(callable.call());
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+    }
+
+    @Test
+    public void testOnChatAsyncIslandChatUsesCurrentMessageNotStale() {
+        stubSyncScheduler();
+
+        ChatListener spyListener = org.mockito.Mockito.spy(listener);
+        spyListener.toggleIslandChat(island, player);
+        when(im.getIslandAt(any())).thenReturn(Optional.of(island));
+
+        // First async chat message
+        AsyncPlayerChatEvent event1 = new AsyncPlayerChatEvent(true, player, "aaaa", Collections.emptySet());
+        spyListener.onChat(event1);
+        assertTrue(event1.isCancelled());
+        verify(spyListener).islandChat(island, player, "aaaa");
+
+        // Second async chat message must use its own content, not the previous one
+        AsyncPlayerChatEvent event2 = new AsyncPlayerChatEvent(true, player, "test", Collections.emptySet());
+        spyListener.onChat(event2);
+        assertTrue(event2.isCancelled());
+        verify(spyListener).islandChat(island, player, "test");
+        verify(spyListener, org.mockito.Mockito.never()).islandChat(island, player, "aaaa test");
+    }
+
+    @Test
+    public void testOnChatAsyncTeamChatUsesCurrentMessageNotStale() {
+        stubSyncScheduler();
+
+        ChatListener spyListener = org.mockito.Mockito.spy(listener);
+        spyListener.togglePlayerTeamChat(uuid);
+        when(im.inTeam(any(World.class), any(UUID.class))).thenReturn(true);
+
+        AsyncPlayerChatEvent event1 = new AsyncPlayerChatEvent(true, player, "aaaa", Collections.emptySet());
+        spyListener.onChat(event1);
+        assertTrue(event1.isCancelled());
+        verify(spyListener).teamChat(world, player, "aaaa");
+
+        AsyncPlayerChatEvent event2 = new AsyncPlayerChatEvent(true, player, "test", Collections.emptySet());
+        spyListener.onChat(event2);
+        assertTrue(event2.isCancelled());
+        verify(spyListener).teamChat(world, player, "test");
+    }
+
+    // -----------------------------------------------------------------------
     // teamChat tests
     // -----------------------------------------------------------------------
 
