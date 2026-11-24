@@ -1,4 +1,8 @@
 # Chat
+
+<!-- BentoBox stats badges: https://download.bentobox.world/admin (Badges tab) -->
+[![Servers](https://download.bentobox.world/badge/Chat/servers.svg)](https://download.bentobox.world/) [![Downloads](https://download.bentobox.world/badge/Chat/downloads.svg)](https://download.bentobox.world/) [![Minecraft](https://download.bentobox.world/badge/Chat/mc.svg)](https://download.bentobox.world/)
+
 This addon gives players Team Chat and Island Chat for any BentoBox gamemode.
 
 ## Island chat
